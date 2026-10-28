@@ -1,0 +1,1 @@
+# royal-med-texnika-1
