@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="uz">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17443d">
+  <title>Admin panel — Royal Med</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: #172e2a;
+      background: #f5f8f6;
+      font-synthesis: none
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto
+    }
+
+    .top {
+      background: #fff;
+      border-bottom: 1px solid #e0e9e4
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px
+    }
+
+    .brand {
+      color: #17443d;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-decoration: none
+    }
+
+    .brand small {
+      display: block;
+      font-size: 9px;
+      letter-spacing: .3em;
+      margin-top: 3px
+    }
+
+    .button {
+      border: 0;
+      border-radius: 10px;
+      background: #17443d;
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      padding: 11px 15px;
+      cursor: pointer
+    }
+
+    .button:disabled {
+      opacity: .55;
+      cursor: wait
+    }
+
+    .button.light {
+      background: #e7f2eb;
+      color: #17443d
+    }
+
+    .button.danger {
+      background: #fff0ed;
+      color: #9c372b;
+      padding: 7px 10px
+    }
+
+    .main {
+      padding: 34px 0 56px
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e0e9e4;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 14px 38px #163b320d
+    }
+
+    .login {
+      width: min(430px, 100%);
+      margin: 5vh auto
+    }
+
+    .login h1,
+    .heading h1 {
+      margin: 0 0 8px;
+      color: #102f2c
+    }
+
+    .muted,
+    .status {
+      color: #6b7c77;
+      font-size: 13px;
+      line-height: 1.55
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      margin: 15px 0;
+      font-size: 13px;
+      font-weight: 700
+    }
+
+    .field input,
+    .toolbar input,
+    .toolbar select,
+    .table input,
+    .addForm input {
+      min-width: 0;
+      width: 100%;
+      border: 1px solid #dce6e0;
+      border-radius: 9px;
+      background: #fff;
+      padding: 10px 11px;
+      font: inherit;
+      color: #172e2a
+    }
+
+    .field input:focus,
+    .toolbar input:focus,
+    .toolbar select:focus,
+    .table input:focus,
+    .addForm input:focus {
+      outline: 2px solid #a6ca6d55;
+      border-color: #6e9a86
+    }
+
+    .status {
+      min-height: 20px;
+      margin: 12px 0 0
+    }
+
+    .error {
+      color: #a22e22
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px
+    }
+
+    .heading p {
+      margin: 0
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid #e0e9e4;
+      border-radius: 13px;
+      padding: 16px
+    }
+
+    .stat b {
+      display: block;
+      font-size: 24px;
+      color: #17443d;
+      margin-bottom: 3px
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: #6b7c77
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0
+    }
+
+    .toolbar input {
+      max-width: 390px
+    }
+
+    .tableWrap {
+      overflow: auto;
+      border: 1px solid #e0e9e4;
+      border-radius: 12px;
+      background: #fff
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px
+    }
+
+    .table th,
+    .table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #edf1ee;
+      font-size: 12px
+    }
+
+    .table th {
+      position: sticky;
+      top: 0;
+      background: #f5f8f6;
+      color: #52645d
+    }
+
+    .table td:first-child {
+      min-width: 210px
+    }
+
+    .table td:nth-child(2) {
+      min-width: 140px
+    }
+
+    .table input {
+      padding: 8px;
+      font-size: 12px
+    }
+
+    .table input[type=number] {
+      min-width: 85px
+    }
+
+    .table input[data-field=name] {
+      min-width: 180px
+    }
+
+    .rowActions {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .savebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 16px 0 28px
+    }
+
+    .addForm {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1fr 1fr auto;
+      gap: 9px;
+      align-items: end;
+      margin-top: 14px
+    }
+
+    .addForm label {
+      display: grid;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    .pager {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px
+    }
+
+    .empty {
+      padding: 30px;
+      text-align: center;
+      color: #6b7c77
+    }
+
+    .notice {
+      background: #fff9e9;
+      border: 1px solid #f1e3b7;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #75602c;
+      font-size: 12px;
+      line-height: 1.55;
+      margin-top: 18px
+    }
+
+    @media(max-width:720px) {
+      .main {
+        padding-top: 22px
+      }
+
+      .card {
+        padding: 17px
+      }
+
+      .stats {
+        grid-template-columns: 1fr
+      }
+
+      .heading {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column
+      }
+
+      .toolbar input {
+        max-width: none
+      }
+
+      .addForm {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .addForm label:first-child {
+        grid-column: 1/-1
+      }
+
+      .savebar {
+        align-items: flex-start;
+        flex-direction: column
+      }
+    }
+  </style>
+  <style>
+    :root {
+      color-scheme: light
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      background: #0d1c19;
+      color: #e6f1ed
+    }
+
+    :root[data-theme="dark"] body {
+      background: #0d1c19;
+      color: #e6f1ed
+    }
+
+    :root[data-theme="dark"] .top,
+    :root[data-theme="dark"] .card,
+    :root[data-theme="dark"] .stat,
+    :root[data-theme="dark"] .tableWrap {
+      background: #162b27;
+      border-color: #29443c
+    }
+
+    :root[data-theme="dark"] .brand,
+    :root[data-theme="dark"] .login h1,
+    :root[data-theme="dark"] .heading h1 {
+      color: #b9e7d2
+    }
+
+    :root[data-theme="dark"] .muted,
+    :root[data-theme="dark"] .status,
+    :root[data-theme="dark"] .stat span,
+    :root[data-theme="dark"] .empty {
+      color: #a2b5ad
+    }
+
+    :root[data-theme="dark"] .field input,
+    :root[data-theme="dark"] .toolbar input,
+    :root[data-theme="dark"] .toolbar select,
+    :root[data-theme="dark"] .table input,
+    :root[data-theme="dark"] .addForm input {
+      background: #0d1c19;
+      color: #e6f1ed;
+      border-color: #29443c
+    }
+
+    :root[data-theme="dark"] .button.light {
+      background: #203c34;
+      color: #b9e7d2
+    }
+
+    :root[data-theme="dark"] .button.danger {
+      background: #482a28;
+      color: #ffc1b8
+    }
+
+    :root[data-theme="dark"] .table th,
+    :root[data-theme="dark"] .table td {
+      border-color: #29443c
+    }
+
+    :root[data-theme="dark"] .table th {
+      background: #203c34;
+      color: #c3d6ce
+    }
+
+    :root[data-theme="dark"] .notice {
+      background: #3b3321;
+      border-color: #6d5b2c;
+      color: #f0d991
+    }
+
+    :root[data-theme="dark"] .error {
+      color: #ff9e92
+    }
+
+    .navActions {
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .themeButton {
+      min-width: 42px
+    }
+  </style>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('rm_theme') || localStorage.getItem('royal-med-theme');
+      document.documentElement.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch { }
+  </script>
+<style>img{display:none!important}.photo,.productImg,.heroVisual{display:none!important}.heroBox{grid-template-columns:minmax(0,1fr)!important}.detail,.productDetail{grid-template-columns:minmax(0,1fr)!important}.placeholder,.caticon{display:none!important}</style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap nav"><a class="brand" href="/">ROYAL MED<small>ADMIN PANEL</small></a>
+      <div class="navActions"><button class="button light themeButton" id="themeButton" type="button"
+          aria-label="Rang mavzusini almashtirish">☾</button><button class="button light" id="logoutButton"
+          type="button" hidden>Chiqish</button></div>
+    </div>
+  </header>
+  <main class="wrap main">
+    <section class="card login" id="loginPanel">
+      <h1>Admin panelga kirish</h1>
+      <p class="muted">Royal Med mahsulotlar katalogini boshqarish uchun tizimga kiring.</p>
+      <form id="loginForm">
+        <label class="field">Login<input name="username" autocomplete="username" placeholder="admin" required></label>
+        <label class="field">Parol<input name="password" type="password" autocomplete="current-password"
+            required></label>
+        <button class="button" id="loginButton" type="submit">Kirish</button>
+        <p class="status" id="loginStatus" role="status"></p>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="heading">
+        <div>
+          <h1>Mahsulotlar boshqaruvi</h1>
+          <p class="muted">Bu yerdagi o‘zgarishlar sayt katalogida saqlanadi.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="productCount">0</b><span>Mahsulot</span></div>
+        <div class="stat"><b id="categoryCount">0</b><span>Bo‘lim</span></div>
+        <div class="stat"><b id="lowStockCount">0</b><span>Kam qolgan mahsulot</span></div>
+      </div>
+      <section class="card">
+        <h2>Yangi mahsulot qo‘shish</h2>
+        <form class="addForm" id="addForm">
+          <label>Nomi<input name="name" maxlength="200" required></label>
+          <label>Bo‘limi<input name="category" maxlength="80" value="Tibbiy texnika" required></label>
+          <label>Narxi (so‘m)<input name="price" type="number" min="0" step="1" required></label>
+          <label>Qoldiq<input name="stock" type="number" min="0" step="1" placeholder="Noma’lum"></label>
+          <button class="button" type="submit">Qo‘shish</button>
+        </form>
+      </section>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Mahsulot nomi yoki bo‘lim bo‘yicha qidirish"
+          aria-label="Mahsulotlarni qidirish">
+        <span class="muted" id="resultCount"></span>
+      </div>
+      <div class="tableWrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Mahsulot</th>
+              <th>Bo‘lim</th>
+              <th>Narx (so‘m)</th>
+              <th>Qoldiq</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="productRows"></tbody>
+        </table>
+        <div class="empty" id="emptyState" hidden>Mahsulot topilmadi.</div>
+      </div>
+      <div class="pager"><button class="button light" id="moreButton" type="button" hidden>Yana mahsulot
+          ko‘rsatish</button></div>
+      <div class="savebar"><span class="status" id="saveStatus" role="status">O‘zgarishlar saqlangan.</span><button
+          class="button" id="saveButton" type="button" disabled>O‘zgarishlarni saqlash</button></div>
+      <p class="notice">Eslatma: yangi mahsulot uchun rasm yuklash bu panelda mavjud emas. Buyurtmalar Telegram orqali
+        yuboriladi.</p>
+    </section>
+  </main>
+  <script>
+    const loginPanel = document.querySelector('#loginPanel');
+    const dashboard = document.querySelector('#dashboard');
+    const loginForm = document.querySelector('#loginForm');
+    const loginStatus = document.querySelector('#loginStatus');
+    const saveStatus = document.querySelector('#saveStatus');
+    const saveButton = document.querySelector('#saveButton');
+    const themeButton = document.querySelector('#themeButton');
+    const pageSize = 40;
+    let products = [];
+    let visibleCount = pageSize;
+    let dirty = false;
+
+    function applyTheme(theme) {
+      const mode = theme === 'dark' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = mode;
+      themeButton.textContent = mode === 'dark' ? '☀' : '☾';
+      themeButton.setAttribute('aria-label', mode === 'dark' ? 'Yorug‘ mavzuga o‘tish' : 'Qorong‘i mavzuga o‘tish');
+      themeButton.title = mode === 'dark' ? 'Yorug‘ mavzu' : 'Qorong‘i mavzu';
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+    }
+
+    async function request(path, options = {}) {
+      let response;
+      try {
+        response = await fetch(path, { credentials: 'same-origin', ...options, headers: { ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers } });
+      } catch {
+        throw new Error('Sayt serveriga ulanib bo‘lmadi. START-SAYT.bat faylini ishga tushiring va sahifani yangilang.');
+      }
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('Admin API topilmadi. START-SAYT.bat faylini ishga tushiring va http://localhost:3000/admin.html manzilini oching.');
+      }
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'So‘rovni bajarib bo‘lmadi.');
+      return result;
+    }
+
+    function setDirty(message = 'Saqlanmagan o‘zgarishlar bor.') {
+      dirty = true;
+      saveButton.disabled = false;
+      saveStatus.textContent = message;
+      saveStatus.classList.remove('error');
+      updateStats();
+    }
+
+    function updateStats() {
+      document.querySelector('#productCount').textContent = products.length.toLocaleString('uz-UZ');
+      document.querySelector('#categoryCount').textContent = new Set(products.map(product => product.category)).size.toLocaleString('uz-UZ');
+      document.querySelector('#lowStockCount').textContent = products.filter(product => product.stock !== null && product.stock <= 5).length.toLocaleString('uz-UZ');
+    }
+
+    function renderProducts() {
+      const query = document.querySelector('#searchInput').value.trim().toLocaleLowerCase('uz');
+      const filtered = products.filter(product => `${product.name} ${product.category}`.toLocaleLowerCase('uz').includes(query));
+      const visible = filtered.slice(0, visibleCount);
+      document.querySelector('#resultCount').textContent = `${filtered.length.toLocaleString('uz-UZ')} ta mahsulot`;
+      document.querySelector('#emptyState').hidden = visible.length > 0;
+      document.querySelector('#moreButton').hidden = visible.length >= filtered.length;
+      document.querySelector('#productRows').innerHTML = visible.map(product => `
+        <tr data-id="${product.id}">
+          <td><input data-field="name" aria-label="Mahsulot nomi" maxlength="200" value="${escapeHtml(product.name)}"></td>
+          <td><input data-field="category" aria-label="Mahsulot bo‘limi" maxlength="80" value="${escapeHtml(product.category)}"></td>
+          <td><input data-field="price" aria-label="Mahsulot narxi" type="number" min="0" step="1" value="${product.price}"></td>
+          <td><input data-field="stock" aria-label="Ombordagi qoldiq" type="number" min="0" step="1" value="${product.stock ?? ''}" placeholder="?"></td>
+          <td><div class="rowActions"><button class="button danger" type="button" data-delete="${product.id}">O‘chirish</button></div></td>
+        </tr>`).join('');
+    }
+
+    applyTheme(document.documentElement.dataset.theme);
+    themeButton.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem('rm_theme', nextTheme);
+        localStorage.setItem('royal-med-theme', nextTheme);
+      } catch (error) {
+        saveStatus.textContent = `Mavzuni saqlab bo‘lmadi: ${error.message}`;
+        saveStatus.classList.add('error');
+      }
+    });
+
+    async function loadCatalog() {
+      const session = await request('/api/admin/session');
+      if (!session.authenticated) return;
+      const result = await request('/api/admin/catalog');
+      products = result.products;
+      loginPanel.hidden = true;
+      dashboard.hidden = false;
+      document.querySelector('#logoutButton').hidden = false;
+      dirty = false;
+      saveButton.disabled = true;
+      saveStatus.textContent = 'O‘zgarishlar saqlangan.';
+      renderProducts();
+      updateStats();
+    }
+
+    loginForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const button = document.querySelector('#loginButton');
+      button.disabled = true;
+      loginStatus.textContent = 'Tekshirilmoqda…';
+      loginStatus.classList.remove('error');
+      try {
+        const form = new FormData(loginForm);
+        await request('/api/admin/login', { method: 'POST', body: JSON.stringify({ username: form.get('username'), password: form.get('password') }) });
+        loginForm.reset();
+        await loadCatalog();
+      } catch (error) {
+        loginStatus.textContent = error.message;
+        loginStatus.classList.add('error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    document.querySelector('#searchInput').addEventListener('input', () => {
+      visibleCount = pageSize;
+      renderProducts();
+    });
+
+    document.querySelector('#moreButton').addEventListener('click', () => {
+      visibleCount += pageSize;
+      renderProducts();
+    });
+
+    document.querySelector('#productRows').addEventListener('input', event => {
+      const input = event.target.closest('[data-field]');
+      if (!input) return;
+      const product = products.find(item => item.id === Number(input.closest('tr').dataset.id));
+      if (!product) return;
+      if (input.dataset.field === 'price') product.price = input.value === '' ? 0 : Number(input.value);
+      else if (input.dataset.field === 'stock') product.stock = input.value === '' ? null : Number(input.value);
+      else product[input.dataset.field] = input.value;
+      setDirty();
+    });
+
+    document.querySelector('#productRows').addEventListener('click', event => {
+      const button = event.target.closest('[data-delete]');
+      if (!button) return;
+      const product = products.find(item => item.id === Number(button.dataset.delete));
+      if (!product || !window.confirm(`“${product.name}” mahsuloti o‘chirilsinmi?`)) return;
+      products = products.filter(item => item.id !== product.id);
+      setDirty('O‘zgarishlarni saqlashni unutmang.');
+      renderProducts();
+    });
+
+    document.querySelector('#addForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const name = String(form.get('name')).trim();
+      const category = String(form.get('category')).trim();
+      const price = Number(form.get('price'));
+      const stockInput = String(form.get('stock')).trim();
+      if (!name || !category || !Number.isSafeInteger(price) || price < 0 ||
+        (stockInput && (!Number.isSafeInteger(Number(stockInput)) || Number(stockInput) < 0))) {
+        saveStatus.textContent = 'Mahsulot ma’lumotlarini to‘g‘ri kiriting.';
+        saveStatus.classList.add('error');
+        return;
+      }
+      const id = Math.max(0, ...products.map(product => product.id)) + 1;
+      products.unshift({ id, name, category, price, stock: stockInput ? Number(stockInput) : null, pack: '', expiry: '', manufacturer: '', img: '', sourceRow: null });
+      event.currentTarget.reset();
+      event.currentTarget.elements.category.value = 'Tibbiy texnika';
+      visibleCount = pageSize;
+      setDirty('Yangi mahsulot qo‘shildi. Saqlashni unutmang.');
+      renderProducts();
+    });
+
+    saveButton.addEventListener('click', async () => {
+      saveButton.disabled = true;
+      saveStatus.textContent = 'Saqlanmoqda…';
+      saveStatus.classList.remove('error');
+      try {
+        await request('/api/admin/catalog', { method: 'PUT', body: JSON.stringify({ products }) });
+        dirty = false;
+        saveStatus.textContent = 'O‘zgarishlar sayt katalogida saqlandi.';
+        renderProducts();
+        updateStats();
+      } catch (error) {
+        saveStatus.textContent = error.message;
+        saveStatus.classList.add('error');
+        saveButton.disabled = false;
+      }
+    });
+
+    document.querySelector('#logoutButton').addEventListener('click', async () => {
+      if (dirty && !window.confirm('Saqlanmagan o‘zgarishlar bor. Chiqishni xohlaysizmi?')) return;
+      try {
+        await request('/api/admin/session', { method: 'DELETE' });
+        dashboard.hidden = true;
+        loginPanel.hidden = false;
+        document.querySelector('#logoutButton').hidden = true;
+        products = [];
+        dirty = false;
+        saveButton.disabled = true;
+        loginStatus.textContent = '';
+      } catch (error) {
+        saveStatus.textContent = error.message;
+        saveStatus.classList.add('error');
+      }
+    });
+
+    loadCatalog().catch(error => {
+      loginPanel.hidden = false;
+      loginStatus.textContent = error.message === 'Admin panelga qayta kiring.' ? '' : error.message;
+    });
+  </script>
+</body>
+
+</html>

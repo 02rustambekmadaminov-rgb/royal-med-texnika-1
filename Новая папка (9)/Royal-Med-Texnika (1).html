@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="uz">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#17443d">
+    <title>Tibbiy texnika — Royal Med</title>
+    <style>
+        :root {
+            --green: #17443d;
+            --dark: #102f2c;
+            --mint: #e7f2eb;
+            --paper: #fff;
+            --bg: #f5f8f6;
+            --ink: #172e2a;
+            --muted: #6b7c77;
+            --line: #e0e9e4;
+            --lime: #d8f278;
+            --shadow: 0 18px 48px #163b3218
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px Inter, Arial, sans-serif
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 36px));
+            margin: auto
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #fffffff2;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            font-weight: 900;
+            letter-spacing: .03em
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%
+        }
+
+        .brand small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: .33em;
+            margin-top: 3px
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            font-size: 13px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 18px;
+            background: var(--green);
+            color: white;
+            font-weight: 750;
+            cursor: pointer
+        }
+
+        .btn.lime {
+            background: var(--lime);
+            color: var(--green)
+        }
+
+        .intro {
+            padding: 38px 0 20px
+        }
+
+        .crumb {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 14px
+        }
+
+        .intro h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: -.04em;
+            line-height: 1.06;
+            margin: 0;
+            color: var(--dark)
+        }
+
+        .intro p {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 13px 0 0
+        }
+
+        .contactline {
+            margin-top: 17px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .contactline span {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            margin: 18px 0
+        }
+
+        .search {
+            flex: 1;
+            max-width: 520px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border: 1px solid var(--line);
+            background: white;
+            border-radius: 12px;
+            padding: 0 13px
+        }
+
+        .search input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            padding: 13px 0;
+            font: inherit
+        }
+
+        .count {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            padding-bottom: 45px
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .2s
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow)
+        }
+
+        .photo {
+            height: 218px;
+            background: linear-gradient(135deg, #eef5f0, #dfece5);
+            display: grid;
+            place-items: center;
+            overflow: hidden
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 14px
+        }
+
+        .placeholder {
+            font-size: 56px;
+            color: #598278
+        }
+
+        .body {
+            padding: 15px
+        }
+
+        .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: #3b7467;
+            font-weight: 800
+        }
+
+        .name {
+            font-size: 14px;
+            line-height: 1.45;
+            min-height: 60px;
+            margin: 8px 0 12px
+        }
+
+        .meta {
+            font-size: 11px;
+            line-height: 1.6;
+            color: var(--muted);
+            min-height: 38px
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 850;
+            color: var(--dark);
+            margin: 10px 0 12px
+        }
+
+        .price small {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--muted)
+        }
+
+        .card .btn {
+            width: 100%;
+            padding: 11px;
+            font-size: 12px
+        }
+
+        .note {
+            background: #fff9e9;
+            border: 1px solid #f1e3b7;
+            padding: 13px 15px;
+            border-radius: 12px;
+            color: #75602c;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0 0 34px
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 27px 0
+        }
+
+        .footerInner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            font-size: 12px
+        }
+
+        .footer a {
+            color: #d8f278
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: #0e2420a8;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px
+        }
+
+        .modal.open {
+            display: flex
+        }
+
+        .dialog {
+            width: min(640px, 100%);
+            max-height: 92vh;
+            overflow: auto;
+            background: white;
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: var(--shadow)
+        }
+
+        .dialogTop {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: start
+        }
+
+        .dialogTop h2 {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.3
+        }
+
+        .close {
+            border: 0;
+            background: var(--mint);
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 20px;
+            cursor: pointer
+        }
+
+        .detail {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 18px;
+            margin: 18px 0
+        }
+
+        .detail img,
+        .detail .placeholder {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            background: #f1f6f3;
+            border-radius: 14px;
+            padding: 10px
+        }
+
+        .specs {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted)
+        }
+
+        .specs b {
+            color: var(--ink)
+        }
+
+        .form {
+            display: grid;
+            gap: 11px
+        }
+
+        .form label {
+            font-size: 12px;
+            font-weight: 750;
+            display: grid;
+            gap: 6px
+        }
+
+        .form input,
+        .form textarea {
+            font: inherit;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 11px;
+            background: #fbfcfb;
+            color: var(--ink)
+        }
+
+        .form textarea {
+            min-height: 72px;
+            resize: vertical
+        }
+
+        .status {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5
+        }
+
+        .result {
+            padding: 14px;
+            background: #f2f8f2;
+            border-radius: 12px;
+            line-height: 1.6;
+            font-size: 13px
+        }
+
+        .empty {
+            padding: 45px;
+            text-align: center;
+            color: var(--muted);
+            grid-column: 1/-1
+        }
+
+        @media(max-width:900px) {
+            .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+        }
+
+        @media(max-width:650px) {
+            .nav {
+                height: 64px
+            }
+
+            .navlinks {
+                gap: 10px;
+                font-size: 11px
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px
+            }
+
+            .photo {
+                height: 170px
+            }
+
+            .body {
+                padding: 12px
+            }
+
+            .name {
+                font-size: 12px;
+                min-height: 68px
+            }
+
+            .intro {
+                padding-top: 28px
+            }
+
+            .footerInner {
+                align-items: flex-start;
+                flex-direction: column
+            }
+        }
+
+        @media(max-width:390px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .photo {
+                height: 230px
+            }
+
+            .detail {
+                grid-template-columns: 1fr
+            }
+
+            .detail img,
+            .detail .placeholder {
+                height: 205px
+            }
+        }
+    </style>
+<style>img{display:none!important}.photo,.productImg,.heroVisual{display:none!important}.heroBox{grid-template-columns:minmax(0,1fr)!important}.detail,.productDetail{grid-template-columns:minmax(0,1fr)!important}.placeholder,.caticon{display:none!important}</style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrap nav"><a class="brand" href="index.html"><span>ROYAL MED<small>T E X N I K A</small></span></a>
+            <nav class="navlinks"><a href="index.html">Bosh sahifa</a><a href="#catalog">Texnikalar</a></nav><a
+                class="btn lime" href="tel:+998712004040">+998 71 200 40 40</a>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="intro">
+            <div class="crumb"><a href="index.html">Bosh sahifa</a> / Tibbiy texnika</div>
+            <h1>Tibbiy texnika</h1>
+            <p>Royal Med prays-listidagi diagnostika va kuzatuv uskunalari. Mahsulot haqida ma’lumotni ko‘ring va
+                buyurtma so‘rovini qoldiring.</p>
+            <div class="contactline"><span id="telegramStatus">Telegram admin bilan bog‘lanish</span><a class="btn"
+                    id="telegramAdmin" href="https://t.me/Asadbek_2161" target="_blank" rel="noopener">@Asadbek_2161 ·
+                    Telegram admin ↗</a></div>
+        </section>
+        <div class="toolbar" id="catalog"><label class="search">⌕ <input id="search"
+                    placeholder="Tonometr, stetoskop va boshqalar" aria-label="Tibbiy texnika qidirish"></label><span
+                class="count" id="count"></span></div>
+        <section class="grid" id="products" aria-live="polite"></section>
+        <p class="note">Prays-listdagi narxlar va ombordagi mavjudlik o‘zgarishi mumkin. Yakuniy narx va mavjudlik
+            buyurtma tasdiqlanganda aniqlashtiriladi. Ko‘rsatilmagan texnik xususiyatlar haqida do‘kondan so‘rang.</p>
+    </main>
+    <footer class="footer">
+        <div class="wrap footerInner"><span>Royal Med Texnika · Tibbiy asbob-uskunalar</span><a href="index.html">Asosiy
+                do‘konga qaytish</a><span>+998 71 200 40 40</span></div>
+    </footer>
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <div class="dialog">
+            <div class="dialogTop">
+                <h2 id="detailTitle">Mahsulot ma’lumoti</h2><button class="close" id="close"
+                    aria-label="Yopish">×</button>
+            </div>
+            <div id="detail"></div>
+            <div id="orderPane">
+                <h3 style="font-size:15px;margin:18px 0 10px">Buyurtma so‘rovi</h3>
+                <form class="form" id="orderForm"><label>Ism-familiya<input name="name" required autocomplete="name"
+                            placeholder="Masalan, Ali Valiyev"></label><label>Telefon raqam<input name="phone" required
+                            type="tel" autocomplete="tel" placeholder="+998 __ ___ __ __"></label><label>Manzil yoki
+                        filial<input name="address" placeholder="Shahar yoki filial"></label><label>Izoh<textarea
+                            name="note" placeholder="Miqdor yoki qo‘shimcha savol"></textarea></label><button
+                        class="btn lime">So‘rovni yuborish</button></form>
+                <p class="status" style="margin-top:10px">So‘rovni yuborgach Telegram orqali admin bilan bog‘lanish
+                    tugmasi chiqadi.</p>
+            </div>
+            <div id="result" style="display:none"></div>
+        </div>
+    </div>
+    <script>const products = [{ "id": 220, "name": "Стетоскоп KD-SCOPE® , DUAL HEAD", "category": "Tibbiy texnika", "price": 45000, "stock": null, "pack": "1/200", "expiry": "не огр", "manufacturer": "KDM Германия", "img": "", "sourceRow": 250 }, { "id": 221, "name": "Стетоскоп KD-SCOPE® , RAPPAPORT", "category": "Tibbiy texnika", "price": 145000, "stock": null, "pack": "1/200", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 251 }, { "id": 222, "name": "Тонометр механический KD-METER® (Сфигмоманометр), STANDARD", "category": "Tibbiy texnika", "price": 156000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 252 }, { "id": 223, "name": "Тонометр механический KD-METER (Сфигмоманометр), DELUXE", "category": "Tibbiy texnika", "price": 300000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 253 }, { "id": 224, "name": "Тонометр механический модель АДЬЮТОР \"САНКТ - ПЕТЕРБУРГ\" с комплектующим (с фонендоскопом)", "category": "Tibbiy texnika", "price": 138000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "Руссия", "img": "", "sourceRow": 254 }, { "id": 225, "name": "Автоматический тонометр RJA 001", "category": "Tibbiy texnika", "price": 350000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "Китай", "img": "", "sourceRow": 255 }, { "id": 230, "name": "Глюкометр cистема контроля уровня глюкозы в крови \"SATELLITE\" экспресс", "category": "Tibbiy texnika", "price": 340000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Руссия", "img": "", "sourceRow": 260 }, { "id": 233, "name": "Пульсоксиметр LDH-PULSE A2", "category": "Tibbiy texnika", "price": 98000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Индия", "img": "", "sourceRow": 263 }, { "id": 300, "name": "термометр ртутьный", "category": "Tibbiy texnika", "price": 12000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 331 }, { "id": 327, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: S", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "KBT-Medical Art FZE, ОАЭ", "img": "", "sourceRow": 359 }, { "id": 328, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: M", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 360 }, { "id": 329, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: L", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 361 }, { "id": 380, "name": "Аппарат Боброва для кисларода", "category": "Tibbiy texnika", "price": 550000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Китай", "img": "", "sourceRow": 419 }]; const money = n => new Intl.NumberFormat('uz-UZ').format(n) + ' so‘m'; const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); const $ = s => document.querySelector(s); let selected = null, adminUsername = 'Asadbek_2161';
+        function render() { let q = $('#search').value.toLowerCase().trim(), list = products.filter(p => (p.name + ' ' + (p.manufacturer || '')).toLowerCase().includes(q)); $('#count').textContent = list.length + ' ta mahsulot'; $('#products').innerHTML = list.length ? list.map(p => `<article class="card"><div class="photo">${p.img ? `` : '<div class="placeholder">🩺</div>'}</div><div class="body"><div class="label">Tibbiy texnika</div><h2 class="name">${esc(p.name)}</h2><div class="meta">${p.manufacturer ? 'Ishlab chiqaruvchi: ' + esc(p.manufacturer) : 'Ishlab chiqaruvchi: so‘rang'}<br>${p.pack ? 'Qadoq: ' + esc(p.pack) : 'Qadoq: ko‘rsatilmagan'}</div><div class="price">${money(p.price)} <small>· prays-list</small></div><button class="btn" onclick="openProduct(${p.id})">Ma’lumot va buyurtma</button></div></article>`).join('') : '<div class="empty">Mos texnika topilmadi.</div>' }
+        function openProduct(id) { selected = products.find(p => p.id === id); if (!selected) return; $('#detailTitle').textContent = selected.name; $('#detail').innerHTML = `<div class="detail">${selected.img ? `` : '<div class="placeholder">🩺</div>'}<div class="specs"><p><b>Narxi:</b> ${money(selected.price)}</p><p><b>Mavjudligi:</b> So‘rov bo‘yicha aniqlanadi</p><p><b>Ishlab chiqaruvchi:</b> ${esc(selected.manufacturer || 'Prays-listda ko‘rsatilmagan')}</p><p><b>Qadoq:</b> ${esc(selected.pack || 'Ko‘rsatilmagan')}</p><p><b>Yaroqlilik:</b> ${esc(selected.expiry || 'Prays-listda ko‘rsatilmagan')}</p><p><b>Texnik ma’lumot:</b> Prays-listda qo‘shimcha tavsif berilmagan.</p></div></div>`; $('#orderPane').style.display = 'block'; $('#result').style.display = 'none'; $('#modal').classList.add('open') }
+        function telegramUrl(text) { let body = encodeURIComponent(text); return adminUsername ? `https://t.me/${adminUsername}?text=${body}` : `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${body}` }
+        $('#search').addEventListener('input', render); $('#close').onclick = () => $('#modal').classList.remove('open'); $('#modal').addEventListener('click', e => { if (e.target === $('#modal')) $('#modal').classList.remove('open') }); document.addEventListener('keydown', e => { if (e.key === 'Escape') $('#modal').classList.remove('open') });
+        $('#orderForm').onsubmit = async e => { e.preventDefault(); if (!selected) return; let fd = new FormData(e.target), order = { name: fd.get('name'), phone: fd.get('phone'), address: fd.get('address'), note: fd.get('note'), items: [{ id: selected.id, name: selected.name, qty: 1, price: selected.price }], total: selected.price }; let telegramSent = false; try { let response = await fetch('/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(order) }); let data = await response.json(); telegramSent = response.ok && data.telegramSent === true } catch { } let text = `Royal Med texnika buyurtma so‘rovi\nMahsulot: ${selected.name}\nNarxi: ${money(selected.price)}\nMijoz: ${order.name}\nTelefon: ${order.phone}\nManzil/filial: ${order.address || 'ko‘rsatilmagan'}\nIzoh: ${order.note || 'yo‘q'}`; $('#orderPane').style.display = 'none'; $('#result').style.display = 'block'; $('#result').innerHTML = `<div class="result"><b>So‘rov tayyor.</b><br>${telegramSent ? 'Admin Telegramiga avtomatik yuborildi.' : 'Telegram orqali admin bilan yuborish uchun tugmani bosing.'}<p><a class="btn lime" style="margin-top:8px" href="${telegramUrl(text)}" target="_blank" rel="noopener">${telegramSent ? 'Telegram admin chatini ochish' : 'Telegramda yuborish'} ↗</a></p><span class="status">Telefon raqamingiz orqali ham bog‘lanamiz: +998 71 200 40 40</span></div>`; };
+        fetch('/api/status').then(r => r.json()).then(s => { if (s.telegramUsername) { adminUsername = String(s.telegramUsername).replace(/^@/, ''); $('#telegramAdmin').href = `https://t.me/${adminUsername}`; $('#telegramAdmin').textContent = '@' + adminUsername + ' · Telegram admin ↗'; $('#telegramStatus').textContent = 'Admin bilan to‘g‘ridan-to‘g‘ri bog‘lanish' } if (!s.configured) $('#telegramStatus').textContent += ' · sayt orqali so‘rov formasi ham ishlaydi' }).catch(() => { }); render();</script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+# Copy this file to .env and add your API key there. Never put the key in index.html.
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-6-luna
+PORT=3001
+TELEGRAM_ADMIN_USERNAME=Asadbek_2161
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_ADMIN_CHAT_ID=

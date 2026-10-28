@@ -1,0 +1,5 @@
+import {db} from '@/lib/db';import {sign} from '@/lib/auth';import bcrypt from 'bcryptjs';
+export async function POST(req){const {username,password}=await req.json();
+const u=await db.adminUser.findUnique({where:{username}});
+if(!u||!(await bcrypt.compare(password,u.passwordHash)))return Response.json({error:'Login yoki parol xato'},{status:401});
+return Response.json({token:sign(u.username)})}

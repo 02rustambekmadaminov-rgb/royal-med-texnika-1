@@ -1,0 +1,1735 @@
+<!doctype html>
+<html lang="uz">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f7f8f5">
+    <title>Royal Med Texnika — Tibbiyot uchun ishonchli yechimlar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8f5;
+            --paper: #fff;
+            --ink: #142d2b;
+            --muted: #74817e;
+            --line: #e7ebe6;
+            --green: #177e70;
+            --deep: #0f554d;
+            --mint: #e5f3ee;
+            --lime: #d6f36a;
+            --amber: #efb851;
+            --shadow: 0 14px 40px #173d3010;
+            --radius: 20px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            transition: .25s
+        }
+
+        body.dark {
+            --bg: #111b1a;
+            --paper: #192725;
+            --ink: #edf4ef;
+            --muted: #9baca5;
+            --line: #2a3b37;
+            --mint: #213b34;
+            --shadow: 0 14px 40px #0003
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            max-width: 1240px;
+            margin: auto;
+            padding: 0 28px
+        }
+
+        .topline {
+            background: #153a36;
+            color: #dae9e2;
+            font-size: 12px;
+            padding: 9px 0
+        }
+
+        .topline .wrap {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .topline strong {
+            color: var(--lime);
+            font-weight: 600
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: color-mix(in srgb, var(--bg) 91%, transparent);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            height: 76px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            gap: 36px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 220px
+        }
+
+        .brandmark {
+            width: 39px;
+            height: 39px;
+            border-radius: 13px;
+            background: var(--green);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+            font-weight: 800
+        }
+
+        .brandname {
+            font-family: Manrope, sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -.5px
+        }
+
+        .brandname small {
+            display: block;
+            font: 600 9px 'DM Sans';
+            letter-spacing: 2.1px;
+            color: var(--muted);
+            margin-top: 5px
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 27px;
+            color: #5d6c67;
+            font-size: 13px;
+            flex: 1
+        }
+
+        .dark .navlinks {
+            color: var(--muted)
+        }
+
+        .navlinks a:hover {
+            color: var(--green)
+        }
+
+        .navtools {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .navtools .mobileMenuButton {
+            display: none
+        }
+
+        .iconbtn {
+            border: 1px solid var(--line);
+            color: var(--ink);
+            width: 41px;
+            height: 41px;
+            border-radius: 13px;
+            background: var(--paper);
+            display: grid;
+            place-items: center;
+            font-size: 17px;
+            position: relative
+        }
+
+        .counter {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            background: var(--lime);
+            color: #19342b;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            min-width: 18px;
+            height: 18px;
+            display: grid;
+            place-items: center
+        }
+
+        .call {
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 7px
+        }
+
+        .call small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 500;
+            margin-bottom: 3px
+        }
+
+        .hero {
+            padding: 53px 0 36px
+        }
+
+        .heroBox {
+            position: relative;
+            overflow: hidden;
+            background: #123b36;
+            color: white;
+            border-radius: 30px;
+            min-height: 415px;
+            padding: 58px 62px;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center
+        }
+
+        .heroBox:before {
+            content: '';
+            position: absolute;
+            width: 510px;
+            height: 510px;
+            border-radius: 50%;
+            background: #1d6557;
+            right: 9%;
+            top: -150px;
+            opacity: .55
+        }
+
+        .heroBox:after {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border: 1px solid #bde1c427;
+            border-radius: 50%;
+            right: 17%;
+            top: -70px;
+            box-shadow: 0 0 0 36px #bde1c412, 0 0 0 72px #bde1c40b
+        }
+
+        .heroText {
+            position: relative;
+            z-index: 2;
+            max-width: 590px
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            color: #bce8d4;
+            font-weight: 700
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: var(--lime);
+            border-radius: 100%
+        }
+
+        h1 {
+            font: 800 clamp(39px, 5vw, 62px)/1.08 Manrope, sans-serif;
+            letter-spacing: -2.5px;
+            margin: 18px 0 18px
+        }
+
+        .heroText p {
+            font-size: 15px;
+            line-height: 1.75;
+            color: #c5d8d2;
+            max-width: 470px;
+            margin: 0 0 27px
+        }
+
+        .heroActions {
+            display: flex;
+            gap: 12px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 14px 19px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            transition: .2s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn.lime {
+            background: var(--lime);
+            color: #163b32
+        }
+
+        .btn.outline {
+            border: 1px solid #ffffff50;
+            color: white;
+            background: transparent
+        }
+
+        .heroVisual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px
+        }
+
+        .heroVisual img {
+            position: relative;
+            z-index: 2;
+            width: min(100%, 390px);
+            height: 320px;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 25px #0004)
+        }
+
+        .floatcard {
+            position: absolute;
+            z-index: 3;
+            right: 0;
+            bottom: 15px;
+            background: #fff;
+            color: #173c35;
+            border-radius: 15px;
+            padding: 14px 17px;
+            box-shadow: var(--shadow);
+            font-size: 11px
+        }
+
+        .floatcard strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 3px
+        }
+
+        .serviceRow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 4px 0 48px
+        }
+
+        .service {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 15px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 16px
+        }
+
+        .serviceIcon {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            background: var(--mint);
+            display: grid;
+            place-items: center;
+            font-size: 18px
+        }
+
+        .service b {
+            display: block;
+            font-size: 12px
+        }
+
+        .service small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 4px
+        }
+
+        .section {
+            padding: 24px 0 40px
+        }
+
+        .sectHead {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 20px
+        }
+
+        .sectHead h2 {
+            font: 800 27px Manrope, sans-serif;
+            letter-spacing: -1px;
+            margin: 0 0 6px
+        }
+
+        .sectHead p {
+            font-size: 12px;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .textlink {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .cats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px
+        }
+
+        .cat {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            min-height: 137px;
+            background: var(--paper);
+            padding: 19px;
+            transition: .22s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cat:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: #b4d5c6
+        }
+
+        .caticon {
+            font-size: 28px;
+            margin-bottom: 15px
+        }
+
+        .catPhoto {
+            display: block;
+            width: 100%;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 0 0 13px;
+            background: var(--mint)
+        }
+
+        .cat b {
+            font: 700 13px Manrope;
+            display: block
+        }
+
+        .cat small {
+            font-size: 10px;
+            color: var(--muted);
+            display: block;
+            margin-top: 5px
+        }
+
+        .catalog {
+            padding-top: 46px
+        }
+
+        .filters {
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px
+        }
+
+        .searchbox {
+            position: relative;
+            flex: 1;
+            min-width: 210px
+        }
+
+        .searchbox input {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--ink);
+            border-radius: 12px;
+            outline: none
+        }
+
+        .searchbox span {
+            position: absolute;
+            left: 14px;
+            top: 11px;
+            color: var(--muted)
+        }
+
+        .filters select {
+            padding: 12px 32px 12px 13px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            color: var(--ink);
+            font-size: 12px;
+            outline: none
+        }
+
+        .productGrid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px
+        }
+
+        .product {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .2s
+        }
+
+        .product:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow)
+        }
+
+        .productImg {
+            height: 210px;
+            background: #f0f4f0;
+            position: relative;
+            padding: 15px;
+            display: grid;
+            place-items: center
+        }
+
+        .dark .productImg {
+            background: #233330
+        }
+
+        .productImg img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply
+        }
+
+        .dark .productImg img {
+            mix-blend-mode: normal
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 6px 9px;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--green)
+        }
+
+        .badge.low {
+            color: #ab7620;
+            background: #fff4dd
+        }
+
+        .badge.out {
+            color: #a64c4c;
+            background: #fff0ef
+        }
+
+        .fav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border: 0;
+            border-radius: 50%;
+            background: #ffffffd9;
+            color: #66736f
+        }
+
+        .prodBody {
+            padding: 15px
+        }
+
+        .categoryLabel {
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .prodBody h3 {
+            font: 700 13px/1.45 Manrope;
+            margin: 7px 0 12px;
+            min-height: 37px
+        }
+
+        .rating {
+            font-size: 10px;
+            color: #c18a31;
+            margin-bottom: 12px
+        }
+
+        .rating span {
+            color: var(--muted);
+            margin-left: 4px
+        }
+
+        .prodBottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .price {
+            font: 800 15px Manrope
+        }
+
+        .price small {
+            font: 500 9px 'DM Sans';
+            color: var(--muted)
+        }
+
+        .add {
+            border: 0;
+            background: var(--mint);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 700;
+            width: 34px;
+            height: 34px;
+            border-radius: 11px
+        }
+
+        .add:hover {
+            background: var(--green);
+            color: white
+        }
+
+        .empty {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 45px;
+            color: var(--muted)
+        }
+
+        .promo {
+            margin: 35px 0 55px;
+            padding: 32px 38px;
+            border-radius: 23px;
+            background: #e6f1e9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #173b34;
+            overflow: hidden
+        }
+
+        .dark .promo {
+            background: #203c34;
+            color: var(--ink)
+        }
+
+        .promo h2 {
+            font: 800 24px Manrope;
+            margin: 0 0 7px
+        }
+
+        .promo p {
+            font-size: 12px;
+            margin: 0;
+            color: #658078
+        }
+
+        .footer {
+            border-top: 1px solid var(--line);
+            padding: 35px 0 24px
+        }
+
+        .footerInner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .footer p,
+        .footer small {
+            color: var(--muted);
+            font-size: 11px
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: #091c19a1;
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+            transition: .2s
+        }
+
+        .overlay.open {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .drawer {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: min(440px, 100%);
+            background: var(--paper);
+            z-index: 41;
+            transform: translateX(105%);
+            transition: .27s;
+            padding: 25px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .drawer.open {
+            transform: translateX(0)
+        }
+
+        .drawerHead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 17px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .drawerHead h2 {
+            font: 800 22px Manrope;
+            margin: 0
+        }
+
+        .close {
+            border: 0;
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            background: var(--mint);
+            color: var(--ink);
+            font-size: 18px
+        }
+
+        .cartItems {
+            overflow: auto;
+            flex: 1;
+            padding: 10px 0
+        }
+
+        .cartRow {
+            display: grid;
+            grid-template-columns: 62px 1fr auto;
+            align-items: center;
+            gap: 11px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .cartRow img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+            background: #f1f4f1;
+            border-radius: 12px
+        }
+
+        .cartRow strong {
+            font: 700 12px Manrope
+        }
+
+        .cartRow small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 5px
+        }
+
+        .qty {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px
+        }
+
+        .qty button {
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--ink);
+            border-radius: 7px;
+            width: 24px;
+            height: 24px
+        }
+
+        .cartFoot {
+            border-top: 1px solid var(--line);
+            padding-top: 16px
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px
+        }
+
+        .cartFoot .btn {
+            width: 100%
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: #081c19a8;
+            display: none;
+            place-items: center;
+            padding: 18px
+        }
+
+        .modal.open {
+            display: grid
+        }
+
+        .modalCard {
+            background: var(--paper);
+            border-radius: 23px;
+            padding: 26px;
+            width: min(470px, 100%);
+            max-height: 90vh;
+            overflow: auto
+        }
+
+        .modalHead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px
+        }
+
+        .modalHead h2 {
+            font: 800 21px Manrope;
+            margin: 0
+        }
+
+        .form {
+            display: grid;
+            gap: 12px
+        }
+
+        .form label {
+            font-size: 11px;
+            font-weight: 700
+        }
+
+        .form input,
+        .form textarea,
+        .form select {
+            display: block;
+            width: 100%;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--ink);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 6px;
+            outline: none
+        }
+
+        .form textarea {
+            resize: vertical;
+            min-height: 75px
+        }
+
+        .form .btn {
+            width: 100%;
+            margin-top: 4px
+        }
+
+        .success {
+            text-align: center;
+            padding: 28px 10px
+        }
+
+        .success i {
+            font-size: 44px;
+            font-style: normal
+        }
+
+        .success h3 {
+            font: 800 20px Manrope
+        }
+
+        .adminPanel {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 60;
+            overflow: auto
+        }
+
+        .adminPanel.open {
+            display: block
+        }
+
+        .adminTop {
+            position: sticky;
+            top: 0;
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 14px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2
+        }
+
+        .adminContent {
+            max-width: 1120px;
+            margin: 30px auto;
+            padding: 0 24px
+        }
+
+        .adminStats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 20px 0
+        }
+
+        .stat {
+            padding: 20px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 16px
+        }
+
+        .stat small {
+            color: var(--muted)
+        }
+
+        .stat strong {
+            display: block;
+            font: 800 24px Manrope;
+            margin-top: 10px
+        }
+
+        .adminTable {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--paper);
+            border-radius: 14px;
+            overflow: hidden;
+            font-size: 12px
+        }
+
+        .adminTable th,
+        .adminTable td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .adminTable th {
+            color: var(--muted);
+            font-size: 10px;
+            text-transform: uppercase
+        }
+
+        .stockInput {
+            width: 70px;
+            padding: 7px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        .adminActions {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            opacity: 0;
+            z-index: 100;
+            background: #163d35;
+            color: white;
+            border-radius: 12px;
+            padding: 13px 18px;
+            font-size: 12px;
+            transition: .2s;
+            pointer-events: none
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0)
+        }
+
+        @media(max-width:900px) {
+            .nav {
+                gap: 14px
+            }
+
+            .brand {
+                min-width: auto
+            }
+
+            .navlinks {
+                gap: 14px
+            }
+
+            .call {
+                display: none
+            }
+
+            .heroBox {
+                padding: 40px 36px
+            }
+
+            .heroVisual img {
+                height: 260px
+            }
+
+            .productGrid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .cats {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .serviceRow {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                padding: 0 17px
+            }
+
+            .topline .wrap {
+                font-size: 10px
+            }
+
+            .topline .wrap span:last-child {
+                display: none
+            }
+
+            .nav {
+                height: 65px
+            }
+
+            .brandname {
+                font-size: 14px
+            }
+
+            .brandmark {
+                width: 35px;
+                height: 35px
+            }
+
+            .navlinks {
+                display: none
+            }
+
+            .navlinks.open {
+                position: absolute;
+                top: calc(100% + 7px);
+                left: 0;
+                right: 0;
+                z-index: 25;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px;
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                background: var(--bg);
+                box-shadow: 0 14px 32px #102f2c24
+            }
+
+            .navlinks.open a {
+                padding: 12px;
+                border-radius: 9px
+            }
+
+            .navlinks.open a:active {
+                background: var(--mint)
+            }
+
+            .navtools .mobileMenuButton {
+                display: inline-grid;
+                place-items: center
+            }
+
+            .navtools {
+                margin-left: auto
+            }
+
+            .navtools .iconbtn {
+                width: 36px;
+                height: 36px
+            }
+
+            .mobileMenuButton {
+                font-size: 18px
+            }
+
+            .hero {
+                padding-top: 20px
+            }
+
+            .heroBox {
+                grid-template-columns: 1fr;
+                padding: 32px 23px 14px;
+                min-height: 0;
+                border-radius: 23px
+            }
+
+            .heroText p {
+                font-size: 13px
+            }
+
+            .heroVisual {
+                min-height: 210px
+            }
+
+            .heroVisual img {
+                height: 220px
+            }
+
+            .floatcard {
+                right: 0;
+                bottom: 8px
+            }
+
+            .serviceRow {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+                padding: 4px 0 27px
+            }
+
+            .service {
+                padding: 12px 9px;
+                gap: 8px
+            }
+
+            .serviceIcon {
+                width: 33px;
+                height: 33px;
+                font-size: 15px
+            }
+
+            .service b {
+                font-size: 10px
+            }
+
+            .service small {
+                font-size: 9px
+            }
+
+            .sectHead h2 {
+                font-size: 22px
+            }
+
+            .cats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 9px
+            }
+
+            .cat {
+                min-height: 119px;
+                padding: 14px
+            }
+
+            .caticon {
+                font-size: 23px;
+                margin-bottom: 10px
+            }
+
+            .productGrid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 9px
+            }
+
+            .productImg {
+                height: 155px;
+                padding: 10px
+            }
+
+            .prodBody {
+                padding: 11px
+            }
+
+            .prodBody h3 {
+                font-size: 11px;
+                min-height: 47px
+            }
+
+            .price {
+                font-size: 13px
+            }
+
+            .promo {
+                padding: 25px 20px;
+                margin: 22px 0 38px;
+                gap: 12px
+            }
+
+            .promo h2 {
+                font-size: 18px
+            }
+
+            .promo p {
+                line-height: 1.6
+            }
+
+            .promo .btn {
+                padding: 11px;
+                font-size: 11px
+            }
+
+            .footerInner {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column
+            }
+
+            .adminStats {
+                grid-template-columns: 1fr
+            }
+
+            .adminTable {
+                font-size: 10px
+            }
+
+            .adminTable th,
+            .adminTable td {
+                padding: 9px 6px
+            }
+        }
+
+        .brandmark {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: #fff;
+            overflow: hidden;
+            display: grid;
+            place-items: center
+        }
+
+        .brandmark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .badge.unknown {
+            background: #edf2ed;
+            color: #61736d
+        }
+
+        .rating {
+            font-size: 10px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            min-height: 28px
+        }
+
+        .productDetail {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 18px;
+            align-items: start
+        }
+
+        .productDetail img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            background: var(--bg);
+            border-radius: 12px
+        }
+
+        .placeholder {
+            display: grid;
+            place-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            color: #177e70
+        }
+
+        .placeholder span {
+            font-size: 54px;
+            opacity: .8
+        }
+
+        .placeholder small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .productName {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: none;
+            color: var(--ink);
+            text-align: left;
+            font: 700 13px/1.45 Manrope;
+            min-height: 56px;
+            margin: 7px 0 8px
+        }
+
+        .productName:hover {
+            color: var(--green)
+        }
+
+        .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: var(--green);
+            width: 100%;
+            height: 100%
+        }
+
+        .placeholder span {
+            font-size: 52px
+        }
+
+        .placeholder small {
+            font-size: 10px;
+            color: var(--muted)
+        }
+
+        .productDetail {
+            display: grid;
+            grid-template-columns: 125px 1fr;
+            gap: 18px;
+            align-items: start
+        }
+
+        .productDetail img {
+            width: 125px;
+            height: 125px;
+            object-fit: contain;
+            background: var(--bg);
+            border-radius: 12px
+        }
+
+        .productDetail p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin: 6px 0
+        }
+
+        .badge.unknown {
+            background: #edf2ed;
+            color: #61736d
+        }
+
+        .brandmark {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: #fff;
+            overflow: hidden;
+            display: grid;
+            place-items: center
+        }
+
+        .brandmark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        @media(max-width:620px) {
+            .productDetail {
+                grid-template-columns: 1fr
+            }
+
+            .productDetail img {
+                width: 100%;
+                height: 160px
+            }
+        }
+
+        /* Katalog alohida sahifada ko‘rsatiladi */
+        #featuredEquipment,
+        #catalog,
+        #categories {
+            display: none !important
+        }
+    </style>
+<style>img{display:none!important}.photo,.productImg,.heroVisual{display:none!important}.heroBox{grid-template-columns:minmax(0,1fr)!important}.detail,.productDetail{grid-template-columns:minmax(0,1fr)!important}.placeholder,.caticon{display:none!important}</style>
+</head>
+
+<body>
+    <div class="topline">
+        <div class="wrap"><span>✦ O‘zbekiston bo‘ylab yetkazib berish</span><span><strong>Professional tibbiy
+                    texnika</strong> · 09:00–18:00</span></div>
+    </div>
+    <header class="header">
+        <div class="wrap nav"><a class="brand" href="#top"><span class="brandmark">RM+</span><span class="brandname">ROYAL MED<small>T E X N I K
+                        A</small></span></a>
+            <nav class="navlinks" id="homeNavlinks"><a href="mahsulotlar.html">Texnika va mahsulotlar</a><a href="#about">Biz
+                    haqimizda</a><a href="#contact">Aloqa</a></nav>
+            <div class="navtools"><button class="iconbtn mobileMenuButton" id="mobileMenuButton" type="button"
+                    aria-label="Menyuni ochish" aria-expanded="false" aria-controls="homeNavlinks">☰</button><button
+                    class="iconbtn" id="themeBtn" title="Mavzuni almashtirish" aria-label="Rang mavzusini almashtirish">☾</button><button
+                    class="iconbtn" id="cartBtn" title="Savat">♧<span class="counter"
+                        id="cartCount">0</span></button><span class="call"><small>Buyurtma uchun</small>+998 71 200 40
+                    40</span></div>
+        </div>
+    </header>
+    <main id="top">
+        <div class="wrap">
+            <section class="section" id="featuredEquipment">
+                <div class="sectHead">
+                    <div>
+                        <h2>Tibbiy texnika</h2>
+                        <p>Tonometr, stetoskop va boshqa diagnostika uskunalari</p>
+                    </div><a class="textlink" href="mahsulotlar.html">Barcha mahsulotlar ↗</a>
+                </div>
+                <div class="productGrid" id="techProducts"></div>
+            </section>
+        </div>
+        <div class="wrap">
+            <section class="section catalog" id="catalog">
+                <div class="sectHead">
+                    <div>
+                        <h2>Prays-listdagi mahsulotlar</h2>
+                        <p id="catalogSubtitle">2026-yil 29-iyun narxlari · narx va mavjudlikni buyurtmadan oldin
+                            aniqlashtiring</p>
+                    </div><a class="textlink" href="#catalog">Katalogda izlash ↓</a>
+                </div>
+                <div class="filters">
+                    <div class="searchbox"><span>⌕</span><input id="search" placeholder="Mahsulot nomini qidiring...">
+                    </div><select id="catFilter">
+                        <option value="all">Barcha kategoriyalar</option>
+                    </select><select id="availability">
+                        <option value="all">Barcha holatlar</option>
+                        <option value="in">Mavjud</option>
+                        <option value="low">Kam qoldi</option>
+                        <option value="out">Tugagan</option>
+                        <option value="unknown">Mavjudligini so‘rang</option>
+                    </select><select id="sort">
+                        <option value="popular">Saralash: prays-list tartibi</option>
+                        <option value="asc">Narx: arzonidan</option>
+                        <option value="desc">Narx: qimmatidan</option>
+                    </select>
+                </div>
+                <div class="productGrid" id="products"></div>
+            </section>
+        </div>
+        <section class="hero">
+            <div class="wrap">
+                <div class="heroBox">
+                    <div class="heroText"><span class="eyebrow"><i class="dot"></i> Sog‘liq uchun aniq tanlov</span>
+                        <h1>Tibbiyotda ishonch<br>har bir detalda.</h1>
+                        <p>Klinika va mutaxassislar uchun zamonaviy tibbiy uskunalar. Sifatli mahsulot, kafolat va
+                            ishonchli xizmat — barchasi bir joyda.</p>
+                        <div class="heroActions"><a class="btn lime" href="mahsulotlar.html">Mahsulotlarni ko‘rish
+                                <b>↗</b></a><a class="btn outline" href="#contact">Biz bilan bog‘lanish</a></div>
+                    </div>
+                    <div class="heroVisual">
+                        <div class="floatcard"><strong>12+ yil</strong>sohada ishonchli tajriba</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="wrap">
+            <div class="serviceRow">
+                <div class="service">
+                    <div class="serviceIcon">🚚</div>
+                    <div><b>Tezkor yetkazib berish</b><small>O‘zbekiston bo‘ylab</small></div>
+                </div>
+                <div class="service">
+                    <div class="serviceIcon">🛡️</div>
+                    <div><b>Rasmiy kafolat</b><small>Har bir mahsulot uchun</small></div>
+                </div>
+                <div class="service">
+                    <div class="serviceIcon">🩺</div>
+                    <div><b>Mutaxassis maslahati</b><small>To‘g‘ri tanlovga yordam</small></div>
+                </div>
+                <div class="service">
+                    <div class="serviceIcon">✓</div>
+                    <div><b>Sifat kafolati</b><small>Sertifikatlangan texnika</small></div>
+                </div>
+            </div>
+            <section class="section" id="categories">
+                <div class="sectHead">
+                    <div>
+                        <h2>Kategoriyalar</h2>
+                        <p>Kerakli uskunani oson toping</p>
+                    </div><a class="textlink" href="#catalog">Barcha mahsulotlar →</a>
+                </div>
+                <div class="cats" id="categoryCards"></div>
+            </section>
+
+            <section class="promo" id="about">
+                <div>
+                    <h2>Klinikangiz uchun maxsus taklif</h2>
+                    <p>Uskunalar to‘plami yoki ulgurji buyurtma bo‘yicha biz bilan maslahatlashing.</p>
+                </div><a class="btn lime" href="tel:+998945612161">Mutaxassisga qo‘ng‘iroq ↗</a>
+            </section>
+        </div>
+    </main>
+    <footer class="footer" id="contact">
+        <div class="wrap footerInner">
+            <div><a class="brand" href="#top"><span class="brandmark">RM+</span><span class="brandname">ROYAL MED<small>T E X N I K
+                            A</small></span></a>
+                <p>Tibbiyot uchun ishonchli yechimlar.</p>
+            </div>
+            <div><b>+998 94 561 21 61</b>
+                <p>Dushanba – Shanba · 09:00–18:00</p><a class="textlink" href="https://t.me/Asadbek_2161"
+                    target="_blank" rel="noopener">Telegram: @Asadbek_2161</a>
+            </div>
+            <div><button class="textlink" id="adminLoginBtn" style="border:0;background:none;padding:8px">Admin kirish
+                    ↗</button><small style="display:block">© 2026 Royal Med Texnika</small></div>
+        </div>
+    </footer>
+    <div class="overlay" id="overlay"></div>
+    <aside class="drawer" id="drawer">
+        <div class="drawerHead">
+            <h2>Savat <span id="cartHeaderCount"></span></h2><button class="close" id="closeCart">×</button>
+        </div>
+        <div class="cartItems" id="cartItems"></div>
+        <div class="cartFoot">
+            <div class="total"><span>Jami</span><span id="cartTotal">0 so‘m</span></div><button class="btn lime"
+                id="checkout">Buyurtmani rasmiylashtirish →</button>
+        </div>
+    </aside>
+    <button id="aiLauncher" aria-label="AI konsultantni ochish"
+        style="position:fixed;right:24px;bottom:24px;z-index:30;border:0;border-radius:999px;background:var(--green);color:white;padding:15px 19px;box-shadow:0 10px 30px #123b3640;font-weight:700">✦
+        AI konsultant</button>
+    <section id="aiChat" aria-label="AI konsultant chat oynasi"
+        style="display:none;position:fixed;right:24px;bottom:88px;z-index:31;width:min(370px,calc(100vw - 32px));height:min(530px,calc(100vh - 120px));background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 70px #102b2740;overflow:hidden;flex-direction:column">
+        <div
+            style="background:#153a36;color:white;padding:16px;display:flex;justify-content:space-between;align-items:center">
+            <div><b>Royal Med AI</b><small id="aiStatus"
+                    style="display:block;color:#c5d8d2;font-size:10px;margin-top:3px">Katalog bo‘yicha yordamchi</small>
+            </div><button id="aiClose" class="close" aria-label="Chatni yopish"
+                style="background:#ffffff20;color:#fff">×</button>
+        </div>
+        <div id="aiMessages" aria-live="polite"
+            style="padding:15px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px">
+            <div class="aiBubble" data-role="assistant">Salom! Royal Med do‘konidan uskuna tanlashga yordam beraman.
+                Qaysi turdagi mahsulot kerak?</div>
+        </div>
+        <form id="aiForm" style="padding:12px;border-top:1px solid var(--line);display:flex;gap:8px"><input id="aiInput"
+                maxlength="1000" placeholder="Savolingizni yozing..." aria-label="AI konsultantga xabar"
+                style="min-width:0;flex:1;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);color:var(--ink)"><button
+                class="btn lime" aria-label="Xabar yuborish" style="padding:10px 14px">↑</button></form>
+    </section>
+    <div class="modal" id="productModal">
+        <div class="modalCard" id="productContent"></div>
+    </div>
+    <div class="modal" id="orderModal">
+        <div class="modalCard">
+            <div class="modalHead">
+                <h2>Buyurtma berish</h2><button class="close" data-close="orderModal">×</button>
+            </div>
+            <div id="orderContent">
+                <p style="font-size:12px;color:var(--muted);margin-top:-8px">Narx va ombordagi mavjudlik prays-listdan
+                    oldindan tasdiqlanadi. Ma’lumotlaringizni qoldiring, tez orada bog‘lanamiz.</p>
+                <form class="form" id="orderForm"><label>Ism-familiya<input name="name" required
+                            placeholder="Masalan, Ali Valiyev"></label><label>Telefon raqam<input name="phone" required
+                            type="tel" placeholder="+998 __ ___ __ __"></label><label>Manzil yoki filial<input
+                            name="address" placeholder="Toshkent shahri"></label><label>Izoh<textarea name="note"
+                            placeholder="Qo‘shimcha ma’lumot"></textarea></label><button class="btn lime">Buyurtmani
+                        yuborish →</button></form>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="adminLoginModal">
+        <div class="modalCard">
+            <div class="modalHead">
+                <h2>Admin panelga kirish</h2><button class="close" data-close="adminLoginModal">×</button>
+            </div>
+            <p style="font-size:12px;color:var(--muted);margin-top:-8px">Boshqaruv paneliga kirish uchun hisob
+                ma’lumotlarini kiriting.</p>
+            <form class="form" id="adminLoginForm"><label>Foydalanuvchi nomi<input name="username" required
+                        autocomplete="username" placeholder="rayal"></label><label>Parol<input name="password" required
+                        type="password" autocomplete="current-password" placeholder="Parol"></label>
+                <p style="font-size:11px;color:var(--muted);margin:0">Server tekshiradigan login va parolni kiriting.</p>
+                <button class="btn lime">Kirish →</button>
+            </form>
+        </div>
+    </div>
+    <section class="adminPanel" id="admin">
+        <div class="adminTop"><a class="brand" href="#"><span class="brandmark">RM+</span><span class="brandname">ROYAL MED<small>ADMIN
+                        PANEL</small></span></a>
+            <div><button class="btn" id="broadcastBtn" style="background:var(--mint);color:var(--green)">Telegram
+                    yangilik yuborish</button> <button class="close" id="closeAdmin">×</button></div>
+        </div>
+        <div class="adminContent">
+            <h1 style="font-size:32px;margin:0">Boshqaruv paneli</h1>
+            <p style="color:var(--muted);font-size:13px">Ombor qoldig‘i yangilanganda do‘kon holati avtomatik o‘zgaradi.
+            </p>
+            <div class="adminStats">
+                <div class="stat"><small>Jami mahsulotlar</small><strong id="statProducts">—</strong></div>
+                <div class="stat"><small>Buyurtmalar</small><strong id="statOrders">0</strong></div>
+                <div class="stat"><small>Buyurtmalar summasi</small><strong id="statSales">0 so‘m</strong></div>
+            </div>
+            <div class="adminActions"><button class="btn lime" id="addProduct">+ Mahsulot qo‘shish</button><button
+                    class="btn" id="ordersBtn" style="background:var(--mint);color:var(--green)">Buyurtmalar
+                    ro‘yxati</button></div>
+            <div style="overflow:auto">
+                <table class="adminTable">
+                    <thead>
+                        <tr>
+                            <th>Mahsulot</th>
+                            <th>Kategoriya</th>
+                            <th>Narx</th>
+                            <th>Ombor qoldig‘i</th>
+                            <th>Holat</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminRows"></tbody>
+                </table>
+            </div>
+            <div id="ordersSection" style="display:none;margin-top:30px">
+                <h2 style="font:800 22px Manrope">Buyurtmalar</h2>
+                <div style="overflow:auto">
+                    <table class="adminTable">
+                        <thead>
+                            <tr>
+                                <th>Mijoz</th>
+                                <th>Telefon</th>
+                                <th>Buyurtma</th>
+                                <th>Jami</th>
+                                <th>Holat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderRows"></tbody>
+                    </table>
+                </div>
+            </div>
+            <p style="color:var(--muted);font-size:11px;margin-top:18px">Demo ma’lumotlar shu brauzerda saqlanadi.
+                Haqiqiy do‘kon uchun backend va serverdagi admin himoyasini ulang.</p>
+        </div>
+    </section>
+    <div class="toast" id="toast"></div>
+    <script>window.ROYAL_CATALOG = [{ "id": 220, "name": "Стетоскоп KD-SCOPE® , DUAL HEAD", "category": "Tibbiy texnika", "price": 45000, "stock": null, "pack": "1/200", "expiry": "не огр", "manufacturer": "KDM Германия", "img": "", "sourceRow": 250 }, { "id": 221, "name": "Стетоскоп KD-SCOPE® , RAPPAPORT", "category": "Tibbiy texnika", "price": 145000, "stock": null, "pack": "1/200", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 251 }, { "id": 222, "name": "Тонометр механический KD-METER® (Сфигмоманометр), STANDARD", "category": "Tibbiy texnika", "price": 156000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 252 }, { "id": 223, "name": "Тонометр механический KD-METER (Сфигмоманометр), DELUXE", "category": "Tibbiy texnika", "price": 300000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 253 }, { "id": 224, "name": "Тонометр механический модель АДЬЮТОР \"САНКТ - ПЕТЕРБУРГ\" с комплектующим (с фонендоскопом)", "category": "Tibbiy texnika", "price": 138000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "Руссия", "img": "", "sourceRow": 254 }, { "id": 225, "name": "Автоматический тонометр RJA 001", "category": "Tibbiy texnika", "price": 350000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "Китай", "img": "", "sourceRow": 255 }, { "id": 230, "name": "Глюкометр cистема контроля уровня глюкозы в крови \"SATELLITE\" экспресс", "category": "Tibbiy texnika", "price": 340000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Руссия", "img": "", "sourceRow": 260 }, { "id": 233, "name": "Пульсоксиметр LDH-PULSE A2", "category": "Tibbiy texnika", "price": 98000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Индия", "img": "", "sourceRow": 263 }, { "id": 300, "name": "термометр ртутьный", "category": "Tibbiy texnika", "price": 12000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 331 }, { "id": 327, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: S", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "KBT-Medical Art FZE, ОАЭ", "img": "", "sourceRow": 359 }, { "id": 328, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: M", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 360 }, { "id": 329, "name": "Кислородная маска (набор для небулайзера) KBMASK, размер: L", "category": "Tibbiy texnika", "price": 28000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 361 }, { "id": 380, "name": "Аппарат Боброва для кисларода", "category": "Tibbiy texnika", "price": 550000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Китай", "img": "", "sourceRow": 419 }, { "id": 1, "name": "викрил 1 75см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "Китай", "img": "", "sourceRow": 21 }, { "id": 2, "name": "викрил 2/0 90см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 22 }, { "id": 3, "name": "викрил 3/0 90см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 23 }, { "id": 4, "name": "викрил 4/0 90см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 24 }, { "id": 5, "name": "викрил 5/0 90см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 25 }, { "id": 6, "name": "викрил 2 (5метрик) 200см", "category": "Jarrohlik", "price": 15000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 26 }, { "id": 7, "name": "викрил 0 90см", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "10/50.", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 27 }, { "id": 8, "name": "полипропилен 1 75 см", "category": "Jarrohlik", "price": 7500, "stock": null, "pack": "1/100", "expiry": "03 2027", "manufacturer": "", "img": "", "sourceRow": 28 }, { "id": 9, "name": "полипропилен 2/0 75см", "category": "Jarrohlik", "price": 8500, "stock": null, "pack": "1/100", "expiry": "03 2027", "manufacturer": "", "img": "", "sourceRow": 29 }, { "id": 10, "name": "полипропилен 3/0 75см", "category": "Jarrohlik", "price": 8500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 30 }, { "id": 11, "name": "полипропилен 4/0 75см", "category": "Jarrohlik", "price": 8500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 31 }, { "id": 12, "name": "полипропилен 5/0 75см", "category": "Jarrohlik", "price": 8500, "stock": null, "pack": "1/100", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 32 }, { "id": 13, "name": "полипропилен 6/0 75см", "category": "Jarrohlik", "price": 8500, "stock": null, "pack": "1/100", "expiry": "12 2027", "manufacturer": "", "img": "", "sourceRow": 33 }, { "id": 14, "name": "плейн кутгут 2/0 75см", "category": "Jarrohlik", "price": 7000, "stock": null, "pack": "50/100", "expiry": "04 2028", "manufacturer": "", "img": "", "sourceRow": 34 }, { "id": 15, "name": "плейн кетгут 3/0 75см", "category": "Jarrohlik", "price": 7000, "stock": null, "pack": "50/100", "expiry": "04 2028", "manufacturer": "", "img": "", "sourceRow": 35 }, { "id": 16, "name": "плейн кетгут 4/0 75см", "category": "Jarrohlik", "price": 7000, "stock": null, "pack": "50/100", "expiry": "04 2028", "manufacturer": "", "img": "", "sourceRow": 36 }, { "id": 17, "name": "хромик кетгут 3/7 100см", "category": "Jarrohlik", "price": 8000, "stock": null, "pack": "50/100", "expiry": "01 2027", "manufacturer": "", "img": "", "sourceRow": 37 }, { "id": 18, "name": "хромик кетгут 2/6 150см", "category": "Jarrohlik", "price": 8000, "stock": null, "pack": "50/100", "expiry": "01 2027", "manufacturer": "", "img": "", "sourceRow": 38 }, { "id": 19, "name": "викрил лотус 3/0 90см реж", "category": "Jarrohlik", "price": 21000, "stock": null, "pack": "12", "expiry": "07 2028", "manufacturer": "Индия", "img": "", "sourceRow": 39 }, { "id": 20, "name": "викрил лотус 2/0 90см реж", "category": "Jarrohlik", "price": 21000, "stock": null, "pack": "12", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 40 }, { "id": 21, "name": "викрил лотус 4/0 90см реж", "category": "Jarrohlik", "price": 21000, "stock": null, "pack": "12", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 41 }, { "id": 22, "name": "викрил 1 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "Турция", "img": "", "sourceRow": 42 }, { "id": 23, "name": "викрил 2/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 43 }, { "id": 24, "name": "викрил 3/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 44 }, { "id": 25, "name": "викрил 4/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 45 }, { "id": 26, "name": "викрил 5/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 46 }, { "id": 27, "name": "викрил 6/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 47 }, { "id": 28, "name": "пролен 6/0 75см ISORB", "category": "Jarrohlik", "price": 30000, "stock": null, "pack": "12", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 48 }, { "id": 29, "name": "викрил этикон М(2/0) 75см", "category": "Jarrohlik", "price": 62000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "США", "img": "", "sourceRow": 49 }, { "id": 30, "name": "викрил этикон М2(3/0) 75см", "category": "Jarrohlik", "price": 45000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 50 }, { "id": 31, "name": "викрил этикон м1.5 (4/0)75см", "category": "Jarrohlik", "price": 70000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 51 }, { "id": 32, "name": "викрил этикон М1 (5/0) 75см", "category": "Jarrohlik", "price": 75000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 52 }, { "id": 33, "name": "викрил этикон м0,7 (6/0) 75см", "category": "Jarrohlik", "price": 86000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 53 }, { "id": 34, "name": "пролен этикон м1.5(4/0) 90см 2игл", "category": "Jarrohlik", "price": 84000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 54 }, { "id": 35, "name": "пролен этикон м1(5/0) 90см 1игла", "category": "Jarrohlik", "price": 72000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 55 }, { "id": 36, "name": "пролен этикон м0.7(6/0)90см 2игл", "category": "Jarrohlik", "price": 110000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 56 }, { "id": 37, "name": "пролен этикон м2(3/0)90см 1игла", "category": "Jarrohlik", "price": 73000, "stock": null, "pack": "12", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 57 }, { "id": 38, "name": "Зонд Назогастральный ROMOLENE 08", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "Romsons Индия", "img": "", "sourceRow": 59 }, { "id": 39, "name": "Зонд Назогастральный ROMOLENE 10", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 60 }, { "id": 40, "name": "Зонд Назогастральный ROMOLENE 12", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 61 }, { "id": 41, "name": "Зонд Назогастральный ROMOLENE 14", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 62 }, { "id": 42, "name": "Зонд Назогастральный ROMOLENE 16", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 63 }, { "id": 43, "name": "Зонд Назогастральный ROMOLENE 18", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 64 }, { "id": 44, "name": "Зонд Назогастральный ROMOLENE 20", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "1/100", "expiry": "01.05.2028г", "manufacturer": "", "img": "", "sourceRow": 65 }, { "id": 45, "name": "зонд желудочный 0.5 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "06 2027", "manufacturer": "Китай", "img": "", "sourceRow": 66 }, { "id": 46, "name": "зонд желудочный 0.6 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "06 2027", "manufacturer": "", "img": "", "sourceRow": 67 }, { "id": 47, "name": "зонд желудочный 8 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "06 2027", "manufacturer": "", "img": "", "sourceRow": 68 }, { "id": 48, "name": "зонд желудочный 10 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 69 }, { "id": 49, "name": "зонд желудочный 12 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 70 }, { "id": 50, "name": "зонд желудочный 14 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 71 }, { "id": 51, "name": "зонд желудочный 16 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 72 }, { "id": 52, "name": "зонд желудочный 18 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "25/100", "expiry": "06 2027", "manufacturer": "", "img": "", "sourceRow": 73 }, { "id": 53, "name": "зонд желудочный 20 MEDCO", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "1/100", "expiry": "09 2027", "manufacturer": "", "img": "", "sourceRow": 74 }, { "id": 54, "name": "зонд желудочный 8 BEROTUBE®", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 75 }, { "id": 55, "name": "зонд желудочный 10 BEROTUBE®", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 76 }, { "id": 56, "name": "зонд желудочный 12 BEROTUBE®", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 77 }, { "id": 57, "name": "зонд желудочный 14 BEROTUBE®", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 78 }, { "id": 58, "name": "зонд желудочный 16 BEROTUBE®", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 79 }, { "id": 59, "name": "зонд желудочный 18 BEROTUBE®", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "25/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 80 }, { "id": 60, "name": "зонд желудочный 20 BEROTUBE®", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 81 }, { "id": 61, "name": "зонд желудочный 22 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "11/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 82 }, { "id": 62, "name": "зонд желудочный 24 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 83 }, { "id": 63, "name": "зонд желудочный 25 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 84 }, { "id": 64, "name": "зонд желудочный 28 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 85 }, { "id": 65, "name": "зонд желудочный 30 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 86 }, { "id": 66, "name": "зонд желудочный 32 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 87 }, { "id": 67, "name": "зонд желудочный 34 BEROTUBE®", "category": "Sarf materiallari", "price": 17000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 88 }, { "id": 68, "name": "зонд желудочный 36 BEROTUBE®", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "1/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 89 }, { "id": 69, "name": "Катетер фолея 0.8 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 29000, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 91 }, { "id": 70, "name": "Катетер фолея 10 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 29000, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 92 }, { "id": 71, "name": "Катетер фолея 12 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 93 }, { "id": 72, "name": "Катетер фолея 14 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 94 }, { "id": 73, "name": "Катетер фолея 16 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 95 }, { "id": 74, "name": "Катетер фолея 18 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 96 }, { "id": 75, "name": "Катетер фолея 20 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 97 }, { "id": 76, "name": "Катетер фолея 22 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 98 }, { "id": 77, "name": "Катетер фолея 24 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 99 }, { "id": 78, "name": "Катетер фолея 26 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19200, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 100 }, { "id": 79, "name": "Катетер фолея 28 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19000, "stock": null, "pack": "10/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 101 }, { "id": 80, "name": "Катетер фолея 30 ch \"BEROCATH®\"", "category": "Sarf materiallari", "price": 19000, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 102 }, { "id": 81, "name": "Мочеприемник стерильный однократного применения BEROMED, 2000 мл", "category": "Sarf materiallari", "price": 8200, "stock": null, "pack": "10/100", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 103 }, { "id": 82, "name": "мочаприёмник 2000мл Т-", "category": "Sarf materiallari", "price": 5300, "stock": null, "pack": "10/100", "expiry": "11 2025", "manufacturer": "Китай", "img": "", "sourceRow": 104 }, { "id": 83, "name": "Мочеприемник Прикроватный с Т-образным Сливным Клапаном, Стерильный для Однократного Применения Объемом 2 л", "category": "Sarf materiallari", "price": 6000, "stock": null, "pack": "10/100", "expiry": "11 2025", "manufacturer": "Индия", "img": "", "sourceRow": 105 }, { "id": 84, "name": "Катетер фолея 0.8 ch Romsons", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 106 }, { "id": 85, "name": "Катетер фолея 10 ch Romsons", "category": "Sarf materiallari", "price": 14000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 107 }, { "id": 86, "name": "Катетер фолея 12 ch Romsons", "category": "Sarf materiallari", "price": 8000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 108 }, { "id": 87, "name": "Катетер фолея 14 ch Romsons", "category": "Sarf materiallari", "price": 8000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 109 }, { "id": 88, "name": "Катетер фолея 16 ch Romsons", "category": "Sarf materiallari", "price": 8000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 110 }, { "id": 89, "name": "Катетер фолея 18 ch Romsons", "category": "Sarf materiallari", "price": 8000, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 111 }, { "id": 90, "name": "Катетер фолея 22 ch Romsons", "category": "Sarf materiallari", "price": 8000, "stock": null, "pack": "10/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 112 }, { "id": 91, "name": "Катетер фолея 12 ch MEDCO", "category": "Sarf materiallari", "price": 7500, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "Китай", "img": "", "sourceRow": 113 }, { "id": 92, "name": "Катетер фолея 14 ch MEDCO", "category": "Sarf materiallari", "price": 7500, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 114 }, { "id": 93, "name": "Катетер фолея 16 ch MEDCO", "category": "Sarf materiallari", "price": 7500, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 115 }, { "id": 94, "name": "Катетер фолея 18 ch MEDCO", "category": "Sarf materiallari", "price": 7500, "stock": null, "pack": "10/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 116 }, { "id": 95, "name": "Катетер фолея 20 ch MEDCO", "category": "Sarf materiallari", "price": 7500, "stock": null, "pack": "10/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 117 }, { "id": 96, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, Без Манжеты, Размер: 2,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "Индия", "img": "", "sourceRow": 119 }, { "id": 97, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 2,5мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 120 }, { "id": 98, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 3,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 121 }, { "id": 99, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 3,5 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 122 }, { "id": 100, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 4,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 123 }, { "id": 101, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 4,5 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 124 }, { "id": 102, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 5,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 125 }, { "id": 103, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 5,5 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "01.30.2030", "manufacturer": "", "img": "", "sourceRow": 126 }, { "id": 104, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 6,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 127 }, { "id": 105, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 6,5 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 128 }, { "id": 106, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 7,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 129 }, { "id": 107, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 7,5 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 130 }, { "id": 108, "name": "Трубки Эндотрахеальные LDH-Tube, Стерильный, с Манжеты, Размер: 8,0 мм", "category": "Sarf materiallari", "price": 11000, "stock": null, "pack": "10/150", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 131 }, { "id": 109, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 3.0 mm", "category": "Sarf materiallari", "price": 16000, "stock": null, "pack": "20/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 132 }, { "id": 110, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 3.5 mm", "category": "Sarf materiallari", "price": 16000, "stock": null, "pack": "20/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 133 }, { "id": 111, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 4.0 mm", "category": "Sarf materiallari", "price": 16000, "stock": null, "pack": "20/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 134 }, { "id": 112, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 4.5 mm", "category": "Sarf materiallari", "price": 16000, "stock": null, "pack": "20/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 135 }, { "id": 113, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 5,0 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 136 }, { "id": 114, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 5,5 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 137 }, { "id": 115, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 6,0 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 138 }, { "id": 116, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 6,5 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 139 }, { "id": 117, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 7,0 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 140 }, { "id": 118, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 7,5 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 141 }, { "id": 119, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 8,0 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 142 }, { "id": 120, "name": "Трубка эндотрахеальная \"BEROTUBE®\", c манжетой, размер: 8,5 mm", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 143 }, { "id": 121, "name": "Трубка эндотрахеальная 2.5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2029", "manufacturer": "Китай", "img": "", "sourceRow": 144 }, { "id": 122, "name": "Трубка эндотрахеальная 3,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2029", "manufacturer": "", "img": "", "sourceRow": 145 }, { "id": 123, "name": "Трубка эндотрахеальная 3,5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2029", "manufacturer": "", "img": "", "sourceRow": 146 }, { "id": 124, "name": "Трубка эндотрахеальная 4,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2028", "manufacturer": "", "img": "", "sourceRow": 147 }, { "id": 125, "name": "Трубка эндотрахеальная 4,5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2029", "manufacturer": "", "img": "", "sourceRow": 148 }, { "id": 126, "name": "Трубка эндотрахеальная 5,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2029", "manufacturer": "", "img": "", "sourceRow": 149 }, { "id": 127, "name": "Трубка эндотрахеальная 5,5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "10/100", "expiry": "06 2027", "manufacturer": "", "img": "", "sourceRow": 150 }, { "id": 128, "name": "Трубка эндотрахеальная 6,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 151 }, { "id": 129, "name": "Трубка эндотрахеальная 6,5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 152 }, { "id": 130, "name": "Трубка эндотрахеальная 7,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 153 }, { "id": 131, "name": "Трубка эндотрахеальная 7,5 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 154 }, { "id": 132, "name": "Трубка эндотрахеальная 8,0 ch MEDCO", "category": "Sarf materiallari", "price": 10000, "stock": null, "pack": "20/100", "expiry": "05 2028", "manufacturer": "", "img": "", "sourceRow": 155 }, { "id": 133, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 3.0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "01 2028", "manufacturer": "LDH MEDIKAL", "img": "", "sourceRow": 157 }, { "id": 134, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 3.5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 158 }, { "id": 135, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 4,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 159 }, { "id": 136, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 4,5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 160 }, { "id": 137, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 5,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "01 2028", "manufacturer": "", "img": "", "sourceRow": 161 }, { "id": 138, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 5.5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 162 }, { "id": 139, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 6,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 163 }, { "id": 140, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 6,5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 164 }, { "id": 141, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 7,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "09 2028", "manufacturer": "", "img": "", "sourceRow": 165 }, { "id": 142, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 7,5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "09 2028", "manufacturer": "", "img": "", "sourceRow": 166 }, { "id": 143, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 8,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "09 2028", "manufacturer": "", "img": "", "sourceRow": 167 }, { "id": 144, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 8,5 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "09 2028", "manufacturer": "", "img": "", "sourceRow": 168 }, { "id": 145, "name": "Трахеостомическая Трубка Стерильный с Манжетой, Размер: 9,0 мм", "category": "Sarf materiallari", "price": 120000, "stock": null, "pack": "шт", "expiry": "09 2028", "manufacturer": "", "img": "", "sourceRow": 169 }, { "id": 146, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 18G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 172 }, { "id": 147, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 20G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 173 }, { "id": 148, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 21G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 174 }, { "id": 149, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 22G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 175 }, { "id": 150, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 23G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 176 }, { "id": 151, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 24G", "category": "Sarf materiallari", "price": 20000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 177 }, { "id": 152, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 25G", "category": "Sarf materiallari", "price": 24000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 178 }, { "id": 153, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 26G", "category": "Sarf materiallari", "price": 26000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 179 }, { "id": 154, "name": "Иглы спинальные KD-FINE®, Quincke, размер: 27G", "category": "Sarf materiallari", "price": 26000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 180 }, { "id": 155, "name": "Игла Спинальная QUINCKE, Размер: 18 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "Индия", "img": "", "sourceRow": 181 }, { "id": 156, "name": "Игла Спинальная QUINCKE, Размер: 20 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 182 }, { "id": 157, "name": "Игла Спинальная QUINCKE, Размер: 21 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 183 }, { "id": 158, "name": "Игла Спинальная QUINCKE, Размер: 22 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 184 }, { "id": 159, "name": "Игла Спинальная QUINCKE, Размер: 23 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 185 }, { "id": 160, "name": "Игла Спинальная QUINCKE, Размер: 24 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 186 }, { "id": 161, "name": "Игла Спинальная QUINCKE, Размер: 25 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 187 }, { "id": 162, "name": "Игла Спинальная QUINCKE, Размер: 26 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 188 }, { "id": 163, "name": "Игла Спинальная QUINCKE, Размер: 27 G", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 189 }, { "id": 164, "name": "Иглы спинальные 18G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "Китай", "img": "", "sourceRow": 190 }, { "id": 165, "name": "Иглы спинальные 20G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 191 }, { "id": 166, "name": "Иглы спинальные 22G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 192 }, { "id": 167, "name": "Иглы спинальные 24G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 193 }, { "id": 168, "name": "Иглы спинальные 25G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 194 }, { "id": 169, "name": "Иглы спинальные 26G MEDCO", "category": "Sarf materiallari", "price": 6500, "stock": null, "pack": "1/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 195 }, { "id": 170, "name": "Скальпель хирургический одноразовый BEROBLADE® 10", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 197 }, { "id": 171, "name": "Скальпель хирургический одноразовый BEROBLADE® 11", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 198 }, { "id": 172, "name": "Скальпель хирургический одноразовый BEROBLADE® 12", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 199 }, { "id": 173, "name": "Скальпель хирургический одноразовый BEROBLADE® 15", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 200 }, { "id": 174, "name": "Скальпель хирургический одноразовый BEROBLADE® 20", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 201 }, { "id": 175, "name": "Скальпель хирургический одноразовый BEROBLADE® 21", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 202 }, { "id": 176, "name": "Скальпель хирургический одноразовый BEROBLADE® 22", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 203 }, { "id": 177, "name": "Скальпель хирургический одноразовый BEROBLADE® 23", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 204 }, { "id": 178, "name": "Скальпель хирургический одноразовый BEROBLADE® 24", "category": "Jarrohlik", "price": 5300, "stock": null, "pack": "10/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 205 }, { "id": 179, "name": "Скальпель Хирургическая 10 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "Индия", "img": "", "sourceRow": 206 }, { "id": 180, "name": "Скальпель Хирургическая 11 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 207 }, { "id": 181, "name": "Скальпель Хирургическая 15 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 208 }, { "id": 182, "name": "Скальпель Хирургическая 20 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 209 }, { "id": 183, "name": "Скальпель Хирургическая 21 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 210 }, { "id": 184, "name": "Скальпель Хирургическая 22 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 211 }, { "id": 185, "name": "Скальпель Хирургическая 23 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 212 }, { "id": 186, "name": "Скальпель Хирургическая 24 SURGEON", "category": "Jarrohlik", "price": 3500, "stock": null, "pack": "10/100", "expiry": "01.01.2030г", "manufacturer": "", "img": "", "sourceRow": 213 }, { "id": 187, "name": "клипсы лигатурные титановые", "category": "Jarrohlik", "price": 60000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 214 }, { "id": 188, "name": "Лезвие хирургическое стерильные BEROBLADE®: 10", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 216 }, { "id": 189, "name": "Лезвие хирургическое стерильные BEROBLADE®: 11", "category": "Jarrohlik", "price": 230000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 217 }, { "id": 190, "name": "Лезвие хирургическое стерильные BEROBLADE®: 12", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 218 }, { "id": 191, "name": "Лезвие хирургическое стерильные BEROBLADE®: 13", "category": "Jarrohlik", "price": 230000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 219 }, { "id": 192, "name": "Лезвие хирургическое стерильные BEROBLADE®: 15", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 220 }, { "id": 193, "name": "Лезвие хирургическое стерильные BEROBLADE®: 18", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 221 }, { "id": 194, "name": "Лезвие хирургическое стерильные BEROBLADE®: 20", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 222 }, { "id": 195, "name": "Лезвие хирургическое стерильные BEROBLADE®: 21", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 223 }, { "id": 196, "name": "Лезвие хирургическое стерильные BEROBLADE®: 22", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 224 }, { "id": 197, "name": "Лезвие хирургическое стерильные BEROBLADE®: 23", "category": "Jarrohlik", "price": 230000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 225 }, { "id": 198, "name": "Лезвие хирургическое стерильные BEROBLADE®: 24", "category": "Jarrohlik", "price": 220000, "stock": null, "pack": "100/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 226 }, { "id": 199, "name": "Лезвие хирургическое стерильные BEROBLADE®: 36", "category": "Jarrohlik", "price": 230000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 227 }, { "id": 200, "name": "Лезвия Хирургическая, 11 STAINLESS", "category": "Jarrohlik", "price": 165000, "stock": null, "pack": "100/1000", "expiry": "01.04.2027г", "manufacturer": "Индия", "img": "", "sourceRow": 228 }, { "id": 201, "name": "Лезвия Хирургическая, 15 STAINLESS", "category": "Jarrohlik", "price": 165000, "stock": null, "pack": "100/1000", "expiry": "01.04.2027г", "manufacturer": "", "img": "", "sourceRow": 229 }, { "id": 202, "name": "Лезвия Хирургическая, 22 STAINLESS", "category": "Jarrohlik", "price": 165000, "stock": null, "pack": "100/1000", "expiry": "01.04.2027г", "manufacturer": "", "img": "", "sourceRow": 230 }, { "id": 203, "name": "Лезвия Хирургическая 23", "category": "Jarrohlik", "price": 65000, "stock": null, "pack": "100/1000", "expiry": "2030", "manufacturer": "Китай", "img": "", "sourceRow": 231 }, { "id": 204, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер: 29G (0.33 x 12.7 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2030", "manufacturer": "KDM Германия", "img": "", "sourceRow": 233 }, { "id": 205, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер: 30G (0.30 x 6 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 234 }, { "id": 206, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер 30G (0.30 x 8 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 235 }, { "id": 207, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер 31G (0.25 x 5 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 236 }, { "id": 208, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер 31G (0.25 x 6 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 237 }, { "id": 209, "name": "Иглы для шприц-ручек \"KD-PENOFINE\", размер 32G (0.23 x 4 mm)", "category": "Jarrohlik", "price": 1000, "stock": null, "pack": "100/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 238 }, { "id": 210, "name": "Катетеры центральные венозные (по методике Сельдингера), KD-MONOSOFT, 20G, (3F)", "category": "Jarrohlik", "price": 260000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "KDM Германия", "img": "", "sourceRow": 240 }, { "id": 211, "name": "Катетеры центральные венозные (по методике Сельдингера), KD-MONOSOFT, 18G, (4F)", "category": "Jarrohlik", "price": 260000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 241 }, { "id": 212, "name": "Катетеры центральные венозные (по методике Сельдингера), KD-MONOSOFT, 16G, (5F, 200 мм.)", "category": "Jarrohlik", "price": 255000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 242 }, { "id": 213, "name": "Катетеры центральные венозные (по методике Сельдингера), KD-MONOSOFT, 14G, (6F, 200 мм.)", "category": "Jarrohlik", "price": 255000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 243 }, { "id": 214, "name": "Катетеры центральные венозные (по методике Сельдингера), KD-MONOSOFT, 12G, (7F)", "category": "Jarrohlik", "price": 280000, "stock": null, "pack": "1/100", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 244 }, { "id": 215, "name": "Подключичный Катетер Одноканальный Стерильный Romsons, Размер: 5 FR (16G) 20 см", "category": "Jarrohlik", "price": 235000, "stock": null, "pack": "1/100", "expiry": "01.07.2030г", "manufacturer": "Romsons Индия", "img": "", "sourceRow": 245 }, { "id": 216, "name": "Подключичный Катетер Двухканальный Стерильный Romsons, Размер: 7 FR (14G+18G) 20 см", "category": "Jarrohlik", "price": 270000, "stock": null, "pack": "1/100", "expiry": "01.07.2030г", "manufacturer": "", "img": "", "sourceRow": 246 }, { "id": 217, "name": "Пластырь для фиксации центральных венозных катетеров на полимерной основе KBFIX, размер: 9x3.5cm", "category": "Jarrohlik", "price": 19000, "stock": null, "pack": "1/100", "expiry": "2027", "manufacturer": "KBT-MEDICAL ART FZE, ОАЭ", "img": "", "sourceRow": 247 }, { "id": 218, "name": "Калоприемник \"Абуцел-Пальма ВТ\" для стомы, размер 20-80 мм, №5 шт в упаковке", "category": "Jarrohlik", "price": 153000, "stock": null, "pack": "1/100", "expiry": "2027", "manufacturer": "ГК Пальма", "img": "", "sourceRow": 248 }, { "id": 219, "name": "Зеркало гинекологическое \"Health line\" типа \"Куско\" с поворотным фиксатором, размер M", "category": "Jarrohlik", "price": 3000, "stock": null, "pack": "1/1000", "expiry": "2029", "manufacturer": "УЗ KOREA", "img": "", "sourceRow": 249 }, { "id": 226, "name": "МАНЖЕТА ДЛЯ ТАНОМЕТРА", "category": "Jarrohlik", "price": 25000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 256 }, { "id": 227, "name": "ГРУША ДЛЯ ТАНОМЕТРА", "category": "Jarrohlik", "price": 25000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 257 }, { "id": 228, "name": "HESURE COMPRESSOR NEBULIZER", "category": "Jarrohlik", "price": 330000, "stock": null, "pack": "1/100", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 258 }, { "id": 229, "name": "KOUMD Compressor Nebulizer", "category": "Jarrohlik", "price": 400000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 259 }, { "id": 231, "name": "Тест-полоски для измерения уровня глюкозы в крови №50 \"Сателлит экспресс\"", "category": "Jarrohlik", "price": 125000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 261 }, { "id": 232, "name": "Одноразовый стерильные Ланцеты №100", "category": "Jarrohlik", "price": 45000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Китай", "img": "", "sourceRow": 262 }, { "id": 234, "name": "Дыхательный одноразовый бактериальный/ вирусный фильтр", "category": "Jarrohlik", "price": 20000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Китай", "img": "", "sourceRow": 264 }, { "id": 235, "name": "ОТСОС НАКОНЕЧНИК ЯНКУЭР", "category": "Jarrohlik", "price": 25000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "Индия", "img": "", "sourceRow": 265 }, { "id": 236, "name": "Матрас Противопрлежнивый", "category": "Jarrohlik", "price": 600000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "Китай", "img": "", "sourceRow": 266 }, { "id": 237, "name": "круг ортопедический надувной", "category": "Jarrohlik", "price": 78000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 267 }, { "id": 238, "name": "ОТСОС ФИЛЬТР ОДНОРАЗОВЫЙ", "category": "Jarrohlik", "price": 45000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 268 }, { "id": 239, "name": "УТКА", "category": "Jarrohlik", "price": 15000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 269 }, { "id": 240, "name": "СУДНО ГАРШОК ЭМАЛИРОВАННЫЙ", "category": "Jarrohlik", "price": 25000, "stock": null, "pack": "шт", "expiry": "не огр", "manufacturer": "", "img": "", "sourceRow": 270 }, { "id": 247, "name": "Шприц 50мл '' с иглой''", "category": "Jarrohlik", "price": 6000, "stock": null, "pack": "0/1000", "expiry": "2029", "manufacturer": "УЗ KOREA", "img": "", "sourceRow": 272 }, { "id": 248, "name": "Шприц 50мл \"жане\"", "category": "Jarrohlik", "price": 6000, "stock": null, "pack": "0/1000", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 273 }, { "id": 250, "name": "Устройство одноразовое для переливания крови и кровезаменителей", "category": "Jarrohlik", "price": 4500, "stock": null, "pack": "0/1000", "expiry": "2029", "manufacturer": "УЗ KOREA", "img": "", "sourceRow": 275 }, { "id": 251, "name": "Устройство одноразовое для переливания крови и кровезаменителей KDM", "category": "Jarrohlik", "price": 5400, "stock": null, "pack": "20/200", "expiry": "2030", "manufacturer": "КДМ Германия", "img": "", "sourceRow": 276 }, { "id": 252, "name": "Пластырь медицинский фиксирующий на тканевой основе белого света \"MMF\" 2,5cmx3m, №1", "category": "Jarrohlik", "price": 5400, "stock": null, "pack": "10/100", "expiry": "2028", "manufacturer": "Узбекистан", "img": "", "sourceRow": 279 }, { "id": 253, "name": "Пластырь медицинский фиксирующий на тканевой основе белого света \"MMF\" 5cmx3m, №1", "category": "Jarrohlik", "price": 8800, "stock": null, "pack": "10/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 280 }, { "id": 254, "name": "Пластырь медицинский фиксирующий на тканевой основе белого света \"MMF\" 2,5cmx10m, №1", "category": "Jarrohlik", "price": 8000, "stock": null, "pack": "10/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 281 }, { "id": 255, "name": "Лейкопластырь MEDIK PLAST гипоаллер. бумажная 2,5cm x 5m, №1", "category": "Jarrohlik", "price": 5600, "stock": null, "pack": "1/200", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 282 }, { "id": 256, "name": "Лейкопластырь MEDIK PLAST гипоаллер. бумажная 2cm x 5m, №1", "category": "Jarrohlik", "price": 4800, "stock": null, "pack": "1/200", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 283 }, { "id": 257, "name": "Лейкопластырь MEDIK PLAST гипоаллер. бумажная 3cm x 5m, №1", "category": "Jarrohlik", "price": 6000, "stock": null, "pack": "1/200", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 284 }, { "id": 258, "name": "Лейкопластырь MEDIK PLAST гипоаллер. бумажная 4cm x 5m, №1", "category": "Jarrohlik", "price": 6700, "stock": null, "pack": "1/200", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 285 }, { "id": 259, "name": "Лейкопластырь MEDIK PLAST гипоаллер. на тканевой основе 2,5cm x 5m, №1", "category": "Jarrohlik", "price": 6100, "stock": null, "pack": "1/1000", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 286 }, { "id": 260, "name": "Лейкопластырь MEDIK PLAST гипоаллер. на тканевой основе 2cm x 5m, №1", "category": "Jarrohlik", "price": 5200, "stock": null, "pack": "1/1000", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 287 }, { "id": 261, "name": "Лейкопластырь MEDIK PLAST гипоаллер. на тканевой основе 3cm x 5m, №1", "category": "Jarrohlik", "price": 6600, "stock": null, "pack": "1/1000", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 288 }, { "id": 262, "name": "Лейкопластырь MEDIK PLAST гипоаллер. на тканевой основе 4cm x 5m, №1", "category": "Jarrohlik", "price": 8900, "stock": null, "pack": "1/1000", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 289 }, { "id": 263, "name": "Пластырь послеоперационный стерильный на нетканной основе MEDIK PLAST 10cm x 20cm, №20", "category": "Jarrohlik", "price": 8000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 290 }, { "id": 264, "name": "Пластырь послеоперационный стерильный на нетканной основе MEDIK PLAST 10cm x 25cm, №20", "category": "Jarrohlik", "price": 10000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 291 }, { "id": 265, "name": "Пластырь послеоперационный стерильный на нетканной основе MEDIK PLAST 10cm x 30cm, №20", "category": "Jarrohlik", "price": 12000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 292 }, { "id": 266, "name": "Пластырь послеоперационный стерильный на нетканной основе MEDIK PLAST 10cm x 15cm №20", "category": "Jarrohlik", "price": 7000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 293 }, { "id": 267, "name": "скоч медицинский 1.25-10м", "category": "Jarrohlik", "price": 3000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "Китай", "img": "", "sourceRow": 294 }, { "id": 268, "name": "скоч медицинский 2,5-10м", "category": "Jarrohlik", "price": 6500, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 295 }, { "id": 269, "name": "Лейкопластырь на Тканевой Основе 2.5 х 5 м", "category": "Jarrohlik", "price": 3000, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "ВЕРОФАРМ Россия", "img": "", "sourceRow": 296 }, { "id": 270, "name": "санипласт для однакратного применения (70mm x 18mm)", "category": "Jarrohlik", "price": 12000, "stock": null, "pack": "1/1000", "expiry": "2030", "manufacturer": "Китай", "img": "", "sourceRow": 297 }, { "id": 271, "name": "KD-FLY Бабочки 18", "category": "Sarf materiallari", "price": 1200, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "KDM Германия", "img": "", "sourceRow": 300 }, { "id": 272, "name": "KD-FLY Бабочки 19", "category": "Sarf materiallari", "price": 1200, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 301 }, { "id": 273, "name": "KD-FLY Бабочки 20", "category": "Sarf materiallari", "price": 1200, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 302 }, { "id": 274, "name": "KD-FLY Бабочки 21", "category": "Sarf materiallari", "price": 1200, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 303 }, { "id": 275, "name": "KD-FLY Бабочки 22", "category": "Sarf materiallari", "price": 1200, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 304 }, { "id": 276, "name": "KD-FLY Бабочки 23", "category": "Sarf materiallari", "price": 1300, "stock": null, "pack": "1/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 305 }, { "id": 277, "name": "KD-FLY Бабочки 24", "category": "Sarf materiallari", "price": 1300, "stock": null, "pack": "1/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 306 }, { "id": 278, "name": "KD-FLY Бабочки 25", "category": "Sarf materiallari", "price": 1300, "stock": null, "pack": "1/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 307 }, { "id": 279, "name": "KD-FLY Бабочки 26", "category": "Sarf materiallari", "price": 1300, "stock": null, "pack": "1/1000", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 308 }, { "id": 280, "name": "KD-FLY Бабочки 27", "category": "Sarf materiallari", "price": 1300, "stock": null, "pack": "1/1000", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 309 }, { "id": 281, "name": "Фиксатор для внутривенного катетера \"BEROTAPE®\", размер 6 x 8 cm", "category": "Sarf materiallari", "price": 1500, "stock": null, "pack": "1/1000", "expiry": "2027", "manufacturer": "КДМ Германия", "img": "", "sourceRow": 311 }, { "id": 282, "name": "Катетер внутривенный однократного применения, KD-FIX 14G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 312 }, { "id": 283, "name": "Катетер внутривенный однократного применения, KD-FIX 16G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 313 }, { "id": 284, "name": "Катетер внутривенный однократного применения, KD-FIX 17G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 314 }, { "id": 285, "name": "Катетер внутривенный однократного применения, KD-FIX 18G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 315 }, { "id": 286, "name": "Катетер внутривенный однократного применения, KD-FIX 20G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 316 }, { "id": 287, "name": "Катетер внутривенный однократного применения, KD-FIX 22G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 317 }, { "id": 288, "name": "Катетер внутривенный однократного применения, KD-FIX 24G", "category": "Sarf materiallari", "price": 4600, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 318 }, { "id": 289, "name": "Катетер внутривенный однократного применения, KD-FIX 26G", "category": "Sarf materiallari", "price": 5400, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 319 }, { "id": 290, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 14 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "Romsons Индия", "img": "", "sourceRow": 320 }, { "id": 291, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 16 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 321 }, { "id": 292, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 18 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 322 }, { "id": 293, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 20 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 323 }, { "id": 294, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 22 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 324 }, { "id": 295, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 24 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 325 }, { "id": 296, "name": "Канюля Внутривенная с Инъекционным Портом Стерильный Размер: 26 G", "category": "Sarf materiallari", "price": 3300, "stock": null, "pack": "50/100", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 326 }, { "id": 297, "name": "скоба (пупочный зажим)", "category": "Sarf materiallari", "price": 1100, "stock": null, "pack": "шт", "expiry": "02 2028", "manufacturer": "Китай", "img": "", "sourceRow": 328 }, { "id": 298, "name": "лор шпатель (деревянный) стер", "category": "Sarf materiallari", "price": 650, "stock": null, "pack": "1/100", "expiry": "", "manufacturer": "Руссия", "img": "", "sourceRow": 329 }, { "id": 299, "name": "тест беременности \"?\"", "category": "Sarf materiallari", "price": 600, "stock": null, "pack": "1/100", "expiry": "11 2028", "manufacturer": "Китай", "img": "", "sourceRow": 330 }, { "id": 301, "name": "перчатки смотревые L/M/S", "category": "Sarf materiallari", "price": 45000, "stock": null, "pack": "1/20.", "expiry": "2027", "manufacturer": "малайзия", "img": "", "sourceRow": 332 }, { "id": 302, "name": "печатки стерильные", "category": "Sarf materiallari", "price": 3200, "stock": null, "pack": "100", "expiry": "2027", "manufacturer": "Узбекистан", "img": "", "sourceRow": 333 }, { "id": 303, "name": "халат стерил операцион", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "1/10.", "expiry": "2025", "manufacturer": "", "img": "", "sourceRow": 334 }, { "id": 304, "name": "простыня стерил операцион", "category": "Sarf materiallari", "price": 15000, "stock": null, "pack": "1/10.", "expiry": "2025", "manufacturer": "", "img": "", "sourceRow": 335 }, { "id": 305, "name": "скоч медицинский 1.5-5м", "category": "Sarf materiallari", "price": 3200, "stock": null, "pack": "10/100", "expiry": "2028", "manufacturer": "", "img": "", "sourceRow": 336 }, { "id": 306, "name": "Дыхательный контур стерил дет", "category": "Anesteziya", "price": 120000, "stock": null, "pack": "шт", "expiry": "02 2027", "manufacturer": "Турция", "img": "", "sourceRow": 338 }, { "id": 307, "name": "Дыхательный контур взрос", "category": "Anesteziya", "price": 80000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "Великобритания", "img": "", "sourceRow": 339 }, { "id": 308, "name": "маска анестезии размер 2", "category": "Anesteziya", "price": 55000, "stock": null, "pack": "шт", "expiry": "03 2026", "manufacturer": "Индия", "img": "", "sourceRow": 340 }, { "id": 309, "name": "маска анестезии размер 3", "category": "Anesteziya", "price": 55000, "stock": null, "pack": "шт", "expiry": "03 2026", "manufacturer": "", "img": "", "sourceRow": 341 }, { "id": 310, "name": "маска анестезии размер 4", "category": "Anesteziya", "price": 55000, "stock": null, "pack": "шт", "expiry": "03 2026", "manufacturer": "", "img": "", "sourceRow": 342 }, { "id": 311, "name": "воздуховод 1", "category": "Anesteziya", "price": 45000, "stock": null, "pack": "шт", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 343 }, { "id": 312, "name": "воздуховод 2", "category": "Anesteziya", "price": 45000, "stock": null, "pack": "шт", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 344 }, { "id": 313, "name": "воздуховод 3", "category": "Anesteziya", "price": 45000, "stock": null, "pack": "шт", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 345 }, { "id": 314, "name": "воздуховод 4", "category": "Anesteziya", "price": 45000, "stock": null, "pack": "шт", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 346 }, { "id": 315, "name": "воздуховод 5", "category": "Anesteziya", "price": 45000, "stock": null, "pack": "шт", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 347 }, { "id": 316, "name": "Абсорбент медицинский 5кг", "category": "Anesteziya", "price": 420000, "stock": null, "pack": "кг", "expiry": "06 2027", "manufacturer": "LDH мед", "img": "", "sourceRow": 348 }, { "id": 317, "name": "кислародная канюля неонат", "category": "Anesteziya", "price": 10600, "stock": null, "pack": "шт", "expiry": "09 2027", "manufacturer": "Индия", "img": "", "sourceRow": 349 }, { "id": 318, "name": "кислародная канюля педиатрик", "category": "Anesteziya", "price": 10200, "stock": null, "pack": "шт", "expiry": "09 2027", "manufacturer": "", "img": "", "sourceRow": 350 }, { "id": 319, "name": "кисларод канюля взрос", "category": "Anesteziya", "price": 11000, "stock": null, "pack": "шт", "expiry": "09 2026", "manufacturer": "", "img": "", "sourceRow": 351 }, { "id": 320, "name": "Катетеры кислородные стерильные однократного применения BEROTUBE®, размер детский (210 cm неонатальный)", "category": "Anesteziya", "price": 17600, "stock": null, "pack": "шт", "expiry": "2029", "manufacturer": "Beromed Германия", "img": "", "sourceRow": 352 }, { "id": 321, "name": "Катетеры кислородные стерильные однократного применения BEROTUBE®, размер детский ( 210 cm педиатрический)", "category": "Anesteziya", "price": 18000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 353 }, { "id": 322, "name": "Катетеры кислородные стерильные однократного применения BEROTUBE®, размер взрослый (Adult 210 cm)", "category": "Anesteziya", "price": 18000, "stock": null, "pack": "шт", "expiry": "2030", "manufacturer": "", "img": "", "sourceRow": 354 }, { "id": 323, "name": "маска для ингаляции педиатрик", "category": "Anesteziya", "price": 18000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "Китай", "img": "", "sourceRow": 355 }, { "id": 324, "name": "маска для ингаляции взрослая", "category": "Anesteziya", "price": 18000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 356 }, { "id": 325, "name": "маска для ингаляции педиатрик наб", "category": "Anesteziya", "price": 26000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 357 }, { "id": 326, "name": "маска для ингаляции взрослая наб", "category": "Anesteziya", "price": 26000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 358 }, { "id": 330, "name": "Маска Кислородная, Стерильный для Однократного Применения для Взрослый", "category": "Anesteziya", "price": 23000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "Romsons Индия", "img": "", "sourceRow": 362 }, { "id": 331, "name": "Маска Кислородная, Стерильный для Однократного Применения для Детский", "category": "Anesteziya", "price": 23000, "stock": null, "pack": "шт", "expiry": "2027", "manufacturer": "", "img": "", "sourceRow": 363 }, { "id": 332, "name": "Маска лицевая трехслойные c фильтром нестерильные, №50 шт в упаковке, синий", "category": "Anesteziya", "price": 550, "stock": null, "pack": "ШТ", "expiry": "не огр", "manufacturer": "Китай", "img": "", "sourceRow": 364 }, { "id": 333, "name": "\"АМБУ\" мешок неонатал", "category": "Anesteziya", "price": 432000, "stock": null, "pack": "шт", "expiry": "06 2028", "manufacturer": "Тайвань", "img": "", "sourceRow": 366 }, { "id": 334, "name": "\"АМБУ\" мешок педиатрик", "category": "Anesteziya", "price": 432000, "stock": null, "pack": "шт", "expiry": "06 2028", "manufacturer": "", "img": "", "sourceRow": 367 }, { "id": 335, "name": "\"АМБУ\" мешок взрослый", "category": "Anesteziya", "price": 432000, "stock": null, "pack": "шт", "expiry": "06 2028", "manufacturer": "", "img": "", "sourceRow": 368 }, { "id": 336, "name": "POVIDERM 10% ПОВИДОН ЙОД 1Л", "category": "Gigiyena", "price": 210000, "stock": null, "pack": "1Л", "expiry": "2030", "manufacturer": "Турция", "img": "", "sourceRow": 370 }, { "id": 337, "name": "СЕПТА ДЕЗ дез средство", "category": "Gigiyena", "price": 205000, "stock": null, "pack": "1 л", "expiry": "09 2026", "manufacturer": "Узбекистан", "img": "", "sourceRow": 371 }, { "id": 338, "name": "Азопирам фл", "category": "Gigiyena", "price": 58000, "stock": null, "pack": "фл", "expiry": "04 2027", "manufacturer": "", "img": "", "sourceRow": 372 }, { "id": 339, "name": "фенофталин фл", "category": "Gigiyena", "price": 48000, "stock": null, "pack": "фл", "expiry": "04 2027", "manufacturer": "", "img": "", "sourceRow": 373 }, { "id": 340, "name": "индикатор стерил 132/20 наруж", "category": "Gigiyena", "price": 204000, "stock": null, "pack": "", "expiry": "05 2027", "manufacturer": "Руссия", "img": "", "sourceRow": 374 }, { "id": 341, "name": "индикатор стерил 132/20 внут", "category": "Gigiyena", "price": 204000, "stock": null, "pack": "", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 375 }, { "id": 342, "name": "индикатор стерил универсал", "category": "Gigiyena", "price": 210000, "stock": null, "pack": "", "expiry": "05 2027", "manufacturer": "", "img": "", "sourceRow": 376 }, { "id": 343, "name": "АБК-хлор 1кг", "category": "Gigiyena", "price": 103000, "stock": null, "pack": "шт", "expiry": "неогр", "manufacturer": "Узбекистан", "img": "", "sourceRow": 377 }, { "id": 344, "name": "ДС-1 обЪём 0.5 л", "category": "Gigiyena", "price": 210000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 378 }, { "id": 345, "name": "мега дез объём 0.5 л", "category": "Gigiyena", "price": 110000, "stock": null, "pack": "шт", "expiry": "06 2029", "manufacturer": "", "img": "", "sourceRow": 379 }, { "id": 346, "name": "перегидроль 33%", "category": "Gigiyena", "price": 28000, "stock": null, "pack": "шт", "expiry": "06 2029", "manufacturer": "Беларусь", "img": "", "sourceRow": 380 }, { "id": 347, "name": "мозорльный пластырь 6шт", "category": "Sarf materiallari", "price": 5200, "stock": null, "pack": "шт", "expiry": "05 2028", "manufacturer": "Руссия", "img": "", "sourceRow": 382 }, { "id": 348, "name": "перцовый пластырь 10*18", "category": "Sarf materiallari", "price": 2800, "stock": null, "pack": "шт", "expiry": "11 2027", "manufacturer": "", "img": "", "sourceRow": 383 }, { "id": 349, "name": "игла для иглотерапии", "category": "Sarf materiallari", "price": 5000, "stock": null, "pack": "шт", "expiry": "05 2027", "manufacturer": "Китай", "img": "", "sourceRow": 384 }, { "id": 350, "name": "шапка \"шарлотка\" 50шт в уп", "category": "Sarf materiallari", "price": 35000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "ARVI Узб", "img": "", "sourceRow": 385 }, { "id": 351, "name": "бахиллы полиэтиленовые", "category": "Sarf materiallari", "price": 170000, "stock": null, "pack": "шт", "expiry": "07 2028", "manufacturer": "", "img": "", "sourceRow": 386 }, { "id": 352, "name": "гель для УЗИ ЛДХ-гель 5кг", "category": "Sarf materiallari", "price": 150000, "stock": null, "pack": "шт", "expiry": "05 2028", "manufacturer": "LDH мед", "img": "", "sourceRow": 387 }, { "id": 353, "name": "гель для УЗИ poliy gel 1кг", "category": "Sarf materiallari", "price": 25000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Узбекистан", "img": "", "sourceRow": 388 }, { "id": 354, "name": "Катетеры отсасывающие fr 06 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "КДМ Германия", "img": "", "sourceRow": 390 }, { "id": 355, "name": "Катетеры отсасывающие fr 08 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 391 }, { "id": 356, "name": "Катетеры отсасывающие fr 10 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 392 }, { "id": 357, "name": "Катетеры отсасывающие fr 12 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 393 }, { "id": 358, "name": "Катетеры отсасывающие fr 14 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 394 }, { "id": 359, "name": "Катетеры отсасывающие fr 16 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 395 }, { "id": 360, "name": "Катетеры отсасывающие fr 18 КДМ", "category": "Sarf materiallari", "price": 12000, "stock": null, "pack": "1/100", "expiry": "2029", "manufacturer": "", "img": "", "sourceRow": 396 }, { "id": 361, "name": "Катетер аспирационный 6fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "Romsons Индия", "img": "", "sourceRow": 397 }, { "id": 362, "name": "Катетер аспирационный 8fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 398 }, { "id": 363, "name": "Катетер аспирационный 10fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 399 }, { "id": 364, "name": "Катетер аспирационный 12fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 400 }, { "id": 365, "name": "Катетер аспирационный 14fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 401 }, { "id": 366, "name": "Катетер аспирационный 16fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 402 }, { "id": 367, "name": "Катетер аспирационный 18fg", "category": "Sarf materiallari", "price": 9000, "stock": null, "pack": "1/100", "expiry": "08 2028", "manufacturer": "", "img": "", "sourceRow": 403 }, { "id": 368, "name": "отсос наконечник \"ЯНКУЭР\" стерил", "category": "Sarf materiallari", "price": 35000, "stock": null, "pack": "1/100", "expiry": "05 2029", "manufacturer": "", "img": "", "sourceRow": 404 }, { "id": 369, "name": "сетка композитная 6*11см", "category": "Jarrohlik", "price": 320000, "stock": null, "pack": "шт", "expiry": "12 2026", "manufacturer": "Турция", "img": "", "sourceRow": 406 }, { "id": 370, "name": "сетка композитная 10*15см", "category": "Jarrohlik", "price": 420000, "stock": null, "pack": "шт", "expiry": "12 2026", "manufacturer": "", "img": "", "sourceRow": 407 }, { "id": 371, "name": "сетка композитная 15*15см", "category": "Jarrohlik", "price": 480000, "stock": null, "pack": "шт", "expiry": "12 2026", "manufacturer": "", "img": "", "sourceRow": 408 }, { "id": 372, "name": "сетка композитная 30*30см", "category": "Jarrohlik", "price": 750000, "stock": null, "pack": "шт", "expiry": "12 2026", "manufacturer": "", "img": "", "sourceRow": 409 }, { "id": 373, "name": "дренаж трубка с мешком (силикон)", "category": "Jarrohlik", "price": 150000, "stock": null, "pack": "шт", "expiry": "05 2027", "manufacturer": "Китай", "img": "", "sourceRow": 410 }, { "id": 374, "name": "зонд \"БЛЭКМОРА\" 18FR", "category": "Jarrohlik", "price": 350000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Руссия", "img": "", "sourceRow": 413 }, { "id": 375, "name": "Губка гемостатическая рассасывающаяся \"Surgi-ORC®\" ORIGINAL, размер: 10.2х20.3см, REF: SOO-0408 - Аналог: Ethicon Surgicel Original", "category": "Jarrohlik", "price": 370000, "stock": null, "pack": "шт", "expiry": "2028", "manufacturer": "Aegis Lifesciences, Индия", "img": "", "sourceRow": 414 }, { "id": 376, "name": "Губка гемостатическая 50*50см", "category": "Jarrohlik", "price": 50000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Руссия", "img": "", "sourceRow": 415 }, { "id": 377, "name": "Губка гемостатическая 90*90см", "category": "Jarrohlik", "price": 75000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "", "img": "", "sourceRow": 416 }, { "id": 378, "name": "губка гемостатическая желотиновая \"cutanplast\"", "category": "Jarrohlik", "price": 90000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "Италия", "img": "", "sourceRow": 417 }, { "id": 379, "name": "костный воск 2.5гр этикон", "category": "Jarrohlik", "price": 60000, "stock": null, "pack": "шт", "expiry": "", "manufacturer": "США", "img": "", "sourceRow": 418 }];
+
+        const categories = [['Tibbiy texnika', 'Tonometr, stetoskop va diagnostika uskunalari', '🩺'], ['Jarrohlik', 'Chok va jarrohlik buyumlari', '✚'], ['Sarf materiallari', 'Tibbiy sarf va bir martalik buyumlar', '🧴'], ['Anesteziya', 'Nafas yo‘llari va anesteziya', '💨'], ['Gigiyena', 'Dezinfeksiya va parvarish', '🧼']];
+        const seed = [
+            { id: 1, name: 'Professional tonometr B.Well PRO-35', category: 'Diagnostika', price: 485000, stock: 12, img: 'photo-1559757175-0eb30cd8c063', rating: '4.9' },
+            { id: 2, name: 'Pulse oksimetr Yuwell YX102', category: 'Diagnostika', price: 325000, stock: 3, img: 'photo-1584634731339-252c581abfc5', rating: '4.8' },
+            { id: 3, name: 'Stetoskop Littmann Classic III', category: 'Diagnostika', price: 1890000, stock: 7, img: 'photo-1576091160399-112ba8d25d1d', rating: '5.0' },
+            { id: 4, name: 'Tibbiy ko‘rik кушеткаси', category: 'Mebel', price: 2750000, stock: 0, img: 'photo-1516549655169-df83a0774514', rating: '4.7' },
+            { id: 5, name: 'Portativ EKG apparati ECG-1103L', category: 'Diagnostika', price: 8420000, stock: 4, img: 'photo-1579684385127-1ef15d508118', rating: '4.9' },
+            { id: 6, name: 'Jarrohlik instrumentlari to‘plami', category: 'Jarrohlik', price: 1260000, stock: 9, img: 'photo-1583912267550-d6c2ac7c5c6d', rating: '4.8' },
+            { id: 7, name: 'Laboratoriya sentrifugasi LC-04', category: 'Laboratoriya', price: 5370000, stock: 2, img: 'photo-1579154204601-01588f351e67', rating: '4.9' },
+            { id: 8, name: 'Reabilitatsiya yurish moslamasi', category: 'Reabilitatsiya', price: 1180000, stock: 6, img: 'photo-1576091160550-2173dba999ef', rating: '4.7' }];
+        if (window.ROYAL_CATALOG?.length) seed.splice(0, seed.length, ...window.ROYAL_CATALOG);
+        const store = (() => { try { let k = '__rm_storage_check'; window.localStorage.setItem(k, '1'); window.localStorage.removeItem(k); return window.localStorage } catch { let memory = {}; return { getItem: k => memory[k] ?? null, setItem: (k, v) => memory[k] = String(v), removeItem: k => delete memory[k] } } })();
+        const catalogVersion = 'royal-price-2026-06-29-v3'; let savedProducts = JSON.parse(store.getItem('rm_products') || 'null'); let products = store.getItem('rm_catalog_version') === catalogVersion && savedProducts ? savedProducts : seed; if (store.getItem('rm_catalog_version') !== catalogVersion) { store.setItem('rm_products', JSON.stringify(products)); store.setItem('rm_catalog_version', catalogVersion); store.removeItem('rm_cart') } let cart = JSON.parse(store.getItem('rm_cart') || '{}'); let dark = store.getItem('rm_theme') ? store.getItem('rm_theme') === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        const $ = s => document.querySelector(s), money = n => new Intl.NumberFormat('uz-UZ').format(n) + ' so‘m', imgurl = () => '', esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])), status = p => p.stock === null ? ['Mavjudligini so‘rang', 'unknown'] : p.stock === 0 ? ['Tugagan', 'out'] : p.stock < 5 ? ['Kam qoldi', 'low'] : ['Mavjud', ''];
+        function save() { store.setItem('rm_products', JSON.stringify(products)); store.setItem('rm_cart', JSON.stringify(cart)) } function toast(t) { let e = $('#toast'); e.textContent = t; e.classList.add('show'); setTimeout(() => e.classList.remove('show'), 2300) }
+        function renderCats() { $('#categoryCards').innerHTML = categories.map(c => { let p = products.find(x => x.category === c[0] && x.img), photo = p ? `` : `<div class="caticon">${c[2]}</div>`; return `<a class="cat" href="#catalog" data-cat="${c[0]}">${photo}<b>${c[0]}</b><small>${c[1]}</small></a>` }).join(''); $('#catFilter').innerHTML = '<option value="all">Barcha kategoriyalar</option>' + categories.map(c => `<option>${c[0]}</option>`).join(''); document.querySelectorAll('.cat').forEach(x => x.onclick = () => { $('#catFilter').value = x.dataset.cat; renderProducts() }) }
+        function productCard(p) { let [st, cl] = status(p), icons = { 'Tibbiy texnika': '🩺', 'Jarrohlik': '✚', 'Sarf materiallari': '🧴', 'Anesteziya': '💨', 'Gigiyena': '🧼' }, image = p.img ? `` : `<div class="placeholder"><span>${icons[p.category] || '✚'}</span><small>Rasm mavjud emas</small></div>`, meta = [p.pack ? `Qadoq: ${esc(p.pack)}` : '', p.manufacturer ? esc(p.manufacturer) : ''].filter(Boolean).join(' · ') || 'Narxlar prays-listdan olingan'; return `<article class="product"><div class="productImg">${image}<span class="badge ${cl}">${st}</span><button class="fav" title="Sevimlilarga qo‘shish" onclick="toast('Sevimlilarga saqlandi')">♡</button></div><div class="prodBody"><div class="categoryLabel">${esc(p.category)}</div><button class="productName" onclick="showProduct(${p.id})">${esc(p.name)}</button><div class="rating">${meta}</div><div class="prodBottom"><div class="price">${money(p.price)}<small> · prays-list</small></div><button class="add" ${p.stock === 0 ? 'disabled' : ''} aria-label="Savatga qo‘shish" onclick="addCart(${p.id})">＋</button></div></div></article>` }
+        function renderProducts() { let list = [...products], q = $('#search').value.toLowerCase(), c = $('#catFilter').value, a = $('#availability').value, s = $('#sort').value; list = list.filter(p => (p.name + ' ' + (p.manufacturer || '') + ' ' + (p.pack || '')).toLowerCase().includes(q) && (c === 'all' || p.category === c) && (a === 'all' || (a === 'in' && p.stock !== null && p.stock >= 5) || (a === 'low' && p.stock !== null && p.stock > 0 && p.stock < 5) || (a === 'out' && p.stock === 0) || (a === 'unknown' && p.stock === null))); if (s === 'asc') list.sort((x, y) => x.price - y.price); if (s === 'desc') list.sort((x, y) => y.price - x.price); $('#catalogSubtitle').textContent = `${list.length} ta mahsulot · narx va mavjudlikni buyurtmadan oldin aniqlashtiring`; $('#products').innerHTML = list.length ? list.map(productCard).join('') : '<div class="empty">Bu so‘rov bo‘yicha mahsulot topilmadi.</div>'; let featured = products.filter(p => p.category === 'Tibbiy texnika').slice(0, 4); $('#techProducts').innerHTML = featured.map(productCard).join('') || '<div class="empty">Prays-listda texnikalar topilmadi.</div>'; renderAdmin() }
+        function showProduct(id) { let p = products.find(x => x.id === id); if (!p) return; let pic = p.img ? `` : '<div class="placeholder"><span>✚</span></div>'; $('#productContent').innerHTML = `<div class="modalHead"><h2>Mahsulot haqida</h2><button class="close" data-product-close>×</button></div><div class="productDetail">${pic}<div><b>${esc(p.name)}</b><p><b>Kategoriya:</b> ${esc(p.category)}</p><p><b>Qadoq:</b> ${esc(p.pack || 'Ko‘rsatilmagan')}</p><p><b>Ishlab chiqaruvchi:</b> ${esc(p.manufacturer || 'Ko‘rsatilmagan')}</p><p><b>Yaroqlilik:</b> ${esc(p.expiry || 'Prays-listda ko‘rsatilmagan')}</p><p><b>Mavjudligi:</b> ${status(p)[0]}</p><p><b>Narx:</b> ${money(p.price)}</p></div></div>`; $('#productModal').classList.add('open') }
+        function addCart(id) { let p = products.find(x => x.id === id); if (!p || p.stock === 0) return; if (p.stock !== null && (cart[id] || 0) >= p.stock) { toast('Ombordagi mavjud miqdorga yetdi'); return } cart[id] = (cart[id] || 0) + 1; save(); renderCart(); toast('Savatga qo‘shildi') }
+        function renderCart() { let ids = Object.keys(cart); let count = ids.reduce((s, id) => s + cart[id], 0), total = ids.reduce((s, id) => s + (products.find(p => p.id == id)?.price || 0) * cart[id], 0); $('#cartCount').textContent = count; $('#cartHeaderCount').textContent = count ? `(${count})` : ''; $('#cartTotal').textContent = money(total); $('#cartItems').innerHTML = ids.length ? ids.map(id => { let p = products.find(x => x.id == id); if (!p) return ''; let pic = p.img ? `` : '<span class="placeholder">✚</span>'; return `<div class="cartRow">${pic}<div><strong>${esc(p.name)}</strong><small>${money(p.price)}</small></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button>${cart[id]}<button onclick="changeQty(${id},1)">+</button></div></div>` }).join('') : '<div class="empty">Savat hozircha bo‘sh.<br>Mahsulotlarni tanlab boshlang.</div>' }
+        function changeQty(id, n) { let p = products.find(x => x.id == id); if (!p) return; let next = (cart[id] || 0) + n; if (next <= 0) delete cart[id]; else if (p.stock !== null && next > p.stock) { toast('Ombordagi mavjud miqdorga yetdi'); return } else cart[id] = next; save(); renderCart() }
+        function renderAdmin() { if (!$('#adminRows') || !$('#admin').classList.contains('open')) return; let orders = JSON.parse(store.getItem('rm_orders') || '[]'); $('#statProducts').textContent = products.length; $('#statOrders').textContent = orders.length; $('#statSales').textContent = money(orders.reduce((s, o) => s + (o.total || 0), 0)); $('#adminRows').innerHTML = products.map(p => `<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.category)}</td><td>${money(p.price)}</td><td><input class="stockInput" aria-label="${esc(p.name)} ombor qoldig‘i" type="number" min="0" placeholder="?" value="${p.stock ?? ''}" onchange="setStock(${p.id},this.value)"></td><td><span class="badge ${status(p)[1]}">${status(p)[0]}</span></td><td><button class="btn" style="padding:7px 9px;background:var(--mint);color:var(--green)" onclick="editProduct(${p.id})">Tahrir</button> <button class="btn" style="padding:7px 9px;background:#fff0ef;color:#a64c4c" onclick="deleteProduct(${p.id})">O‘chirish</button></td></tr>`).join(''); $('#orderRows').innerHTML = orders.length ? orders.map((o, i) => `<tr><td><b>${esc(o.name)}</b></td><td>${esc(o.phone)}</td><td>${o.items.map(x => `${esc(x.name)} × ${x.qty}`).join('<br>')}</td><td>${money(o.total)}</td><td><select aria-label="Buyurtma holati" onchange="updateOrderStatus(${i},this.value)">${['Yangi', 'Tasdiqlangan', 'Yetkazilmoqda', 'Yakunlangan'].map(st => `<option ${o.status === st ? 'selected' : ''}>${st}</option>`).join('')}</select></td></tr>`).join('') : '<tr><td colspan="5">Hozircha buyurtmalar yo‘q.</td></tr>' }
+        function editProduct(id) { let p = products.find(x => x.id === id); if (!p) return; let name = prompt('Mahsulot nomi:', p.name); if (name === null) return; let price = prompt('Narxi (so‘m):', p.price); if (price === null) return; let stock = prompt('Ombor qoldig‘i:', p.stock); if (stock === null) return; p.name = name.trim() || p.name; p.price = Math.max(0, Number(price) || 0); p.stock = Math.max(0, Number(stock) || 0); save(); renderProducts(); toast('Mahsulot yangilandi') }
+        function deleteProduct(id) { let p = products.find(x => x.id === id); if (!p || !confirm(`“${p.name}” mahsuloti o‘chirilsinmi?`)) return; products = products.filter(x => x.id !== id); delete cart[id]; save(); renderProducts(); renderCart(); toast('Mahsulot o‘chirildi') }
+        function updateOrderStatus(i, status) { let orders = JSON.parse(store.getItem('rm_orders') || '[]'); if (orders[i]) { orders[i].status = status; store.setItem('rm_orders', JSON.stringify(orders)); renderAdmin(); toast('Buyurtma holati yangilandi') } }
+        function normalizeCatalogText(value) { const map = { а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo', ж: 'j', з: 'z', и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'x', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sh', ъ: '', ы: 'i', ь: '', э: 'e', ю: 'yu', я: 'ya' }; return String(value || '').toLowerCase().replace(/[а-яё]/g, ch => map[ch] || ch) }
+        function localCatalogAnswer(question) { const greeting = normalizeCatalogText(question).replace(/[^a-z ]/g, ' ').trim(); if (/^(salom|assalom|assalomu alaykum|hello|hi)$/.test(greeting)) return "Salom! Tonometr, stetoskop, pulsoksimetr kabi texnikani qidirib beraman. Qaysi mahsulot kerak?"; const stop = new Set(['kerak', 'bormi', 'qaysi', 'narxi', 'narx', 'qancha', 'topib', 'bering', 'iltimos', 'uchun', 'menga', 'bor', 'qiling', 'mahsulot', 'цена', 'сколько', 'есть']); let terms = normalizeCatalogText(question).split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stop.has(w)); let matches = products.map(p => { let hay = normalizeCatalogText([p.name, p.category, p.manufacturer, p.pack].join(' ')); let score = terms.reduce((n, w) => n + (hay.includes(w) ? 1 : 0), 0); return { p, score } }).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 4).map(x => x.p); if (!matches.length) return `Katalogda ${products.length} ta mahsulot bor. Mahsulot nomi yoki turini yozing (masalan, tonometr, kateter, stetoskop).`; return matches.map(p => `${p.name} — ${money(p.price)}; ${status(p)[0]}${p.pack ? `; qadoq ${p.pack}` : ''}`).join('\n') + '\nNarx va mavjudlikni buyurtmadan oldin do‘kon bilan tasdiqlang.' }
+        let aiConfigured = false; fetch('/api/status').then(r => r.json()).then(info => { aiConfigured = Boolean(info.configured); $('#aiStatus').textContent = aiConfigured ? 'GPT konsultant ulangan' : 'Katalog yordamchisi · GPT kaliti sozlanmagan' }).catch(() => { $('#aiStatus').textContent = 'Oflayn katalog yordamchisi' }); const aiHistory = []; const aiMessages = $('#aiMessages'); function addAiBubble(text, role) { let b = document.createElement('div'); b.className = 'aiBubble'; b.dataset.role = role; b.textContent = text; b.style.cssText = `max-width:88%;padding:11px 13px;border-radius:14px;font-size:12px;line-height:1.55;white-space:pre-wrap;${role === 'user' ? 'align-self:flex-end;background:var(--mint);color:var(--ink)' : 'align-self:flex-start;background:var(--bg);color:var(--ink)'}`; aiMessages.appendChild(b); aiMessages.scrollTop = aiMessages.scrollHeight; return b } $('#aiLauncher').onclick = () => { $('#aiChat').style.display = 'flex'; $('#aiInput').focus() }; $('#aiClose').onclick = () => $('#aiChat').style.display = 'none'; $('#aiForm').onsubmit = async e => { e.preventDefault(); let text = $('#aiInput').value.trim(); if (!text) return; $('#aiInput').value = ''; addAiBubble(text, 'user'); aiHistory.push({ role: 'user', content: text }); let pending = addAiBubble('Javob tayyorlayapman…', 'assistant'); $('#aiForm button').disabled = true; try { if (!aiConfigured) throw new Error('offline'); let res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: aiHistory.slice(-8), catalog: (() => { let q = text.toLowerCase(), hits = products.filter(p => (p.name + ' ' + p.category).toLowerCase().split(/[^\p{L}\p{N}]+/u).some(w => w.length > 2 && q.includes(w))).slice(0, 12); return (hits.length ? hits : products.slice(0, 12)).map(p => ({ name: p.name, category: p.category, price: p.price, stock: p.stock })) })() }) }); let data = await res.json(); if (!res.ok) throw new Error(data.error || 'Server bilan bog‘lanib bo‘lmadi'); pending.textContent = data.reply; aiHistory.push({ role: 'assistant', content: data.reply }) } catch (err) { pending.textContent = (aiConfigured ? 'GPT hozir javob bera olmadi. ' : 'GPT kaliti sozlanmagan, katalog yordamchisi ishlayapti. ') + localCatalogAnswer(text) } finally { $('#aiForm button').disabled = false; aiMessages.scrollTop = aiMessages.scrollHeight } };
+        function setStock(id, n) { let p = products.find(x => x.id === id); p.stock = n === '' ? null : Math.max(0, Number(n) || 0); save(); renderProducts(); toast('Ombor qoldig‘i yangilandi') }
+        $('#themeBtn').onclick = () => { dark = !dark; document.body.classList.toggle('dark', dark); store.setItem('rm_theme', dark ? 'dark' : 'light'); $('#themeBtn').textContent = dark ? '☀' : '☾' }; if (dark) { document.body.classList.add('dark'); $('#themeBtn').textContent = '☀' }
+        const mobileMenuButton = $('#mobileMenuButton'), homeNavlinks = $('#homeNavlinks');
+        mobileMenuButton.addEventListener('click', () => { const open = homeNavlinks.classList.toggle('open'); mobileMenuButton.setAttribute('aria-expanded', String(open)); mobileMenuButton.setAttribute('aria-label', open ? 'Menyuni yopish' : 'Menyuni ochish'); mobileMenuButton.textContent = open ? '×' : '☰' });
+        homeNavlinks.addEventListener('click', e => { if (e.target.closest('a')) { homeNavlinks.classList.remove('open'); mobileMenuButton.setAttribute('aria-expanded', 'false'); mobileMenuButton.setAttribute('aria-label', 'Menyuni ochish'); mobileMenuButton.textContent = '☰' } });
+        $('#cartBtn').onclick = () => { $('#drawer').classList.add('open'); $('#overlay').classList.add('open') }; function closeDrawer() { $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open') } $('#closeCart').onclick = closeDrawer; $('#overlay').onclick = closeDrawer;
+        $('#checkout').onclick = () => { if (!Object.keys(cart).length) { toast('Savatga avval mahsulot qo‘shing'); return } closeDrawer(); $('#orderModal').classList.add('open') }; document.querySelectorAll('[data-close]').forEach(b => b.onclick = () => $('#' + b.dataset.close).classList.remove('open'));
+        $('#orderForm').onsubmit = async e => { e.preventDefault(); let fd = new FormData(e.target), ids = Object.keys(cart); if (!ids.length) { toast('Savat bo‘sh'); return } if (ids.some(id => !products.find(p => p.id == id) || (products.find(p => p.id == id).stock !== null && products.find(p => p.id == id).stock < cart[id]))) { toast('Ombor qoldig‘i o‘zgardi. Savatni tekshiring.'); return } let order = { name: fd.get('name'), phone: fd.get('phone'), address: fd.get('address'), note: fd.get('note'), items: ids.map(id => ({ id: Number(id), name: products.find(p => p.id == id).name, qty: cart[id], price: products.find(p => p.id == id).price })), total: ids.reduce((s, id) => s + products.find(p => p.id == id).price * cart[id], 0), status: 'Yangi', createdAt: new Date().toISOString() }; let telegramSent = false; try { const response = await fetch('/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(order) }); const result = await response.json(); telegramSent = response.ok && result.telegramSent === true } catch { } ids.forEach(id => { let p = products.find(x => x.id == id); if (p.stock !== null) p.stock -= cart[id] }); let orders = JSON.parse(store.getItem('rm_orders') || '[]'); orders.push(order); store.setItem('rm_orders', JSON.stringify(orders)); cart = {}; save(); renderCart(); renderProducts(); let tgText = encodeURIComponent(`Royal Med buyurtma\nMijoz: ${order.name}\nTelefon: ${order.phone}\nManzil: ${order.address || 'ko‘rsatilmagan'}\nMahsulotlar: ${order.items.map(x => x.name + ' × ' + x.qty).join(', ')}\nJami: ${money(order.total)}\nIzoh: ${order.note || 'yo‘q'}`), tgHref = 'https://t.me/Asadbek_2161?text=' + tgText; $('#orderContent').innerHTML = `<div class="success"><i>✓</i><h3>Buyurtma ${telegramSent ? 'Telegram adminiga yuborildi' : 'saqlandi'}!</h3><p style="color:var(--muted);font-size:12px">${telegramSent ? 'Admin sizga tez orada bog‘lanadi.' : 'Telegram orqali admin bilan yuborish uchun quyidagi tugmani bosing.'}</p><a class="btn lime" target="_blank" rel="noopener" href="${tgHref}">@Asadbek_2161 ga Telegramda yozish ↗</a> <button class="btn" onclick="location.reload()">Do‘konga qaytish</button></div>`; };
+        $('#productModal').onclick = e => { if (e.target.matches('[data-product-close]')) $('#productModal').classList.remove('open') }; $('#search').oninput = renderProducts; $('#catFilter').onchange = renderProducts; $('#availability').onchange = renderProducts; $('#sort').onchange = renderProducts; $('#adminRows').addEventListener('change', () => { });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); $('#orderModal').classList.remove('open'); $('#productModal').classList.remove('open'); $('#admin').classList.remove('open') } });
+        // Admin panel server orqali himoyalangan.
+        $('#adminLoginBtn').onclick = () => { window.location.assign('/admin.html'); }; $('#closeAdmin').onclick = () => $('#admin').classList.remove('open'); $('#addProduct').onclick = () => { let name = prompt('Mahsulot nomi:'); if (!name) return; let price = Number(prompt('Narxi (so‘m):', '500000')) || 0; let stock = Math.max(0, Number(prompt('Ombor qoldig‘i:', '1')) || 0); let category = prompt('Kategoriya (Tibbiy texnika, Jarrohlik, Sarf materiallari, Anesteziya, Gigiyena):', 'Tibbiy texnika') || 'Tibbiy texnika'; products.push({ id: Date.now(), name, category, price, stock, img: '', rating: 'Yangi' }); save(); renderProducts(); toast('Mahsulot qo‘shildi') }; $('#broadcastBtn').onclick = () => { let m = prompt('Telegram guruhlariga yuboriladigan yangilik matni:'); if (m) toast('Demo: Telegram bot tokeni sozlangandan keyin yuboriladi') }; $('#ordersBtn').onclick = () => { $('#ordersSection').style.display = $('#ordersSection').style.display === 'none' ? 'block' : 'none'; renderAdmin() };
+        renderCats(); renderProducts(); renderCart();
+    </script>
+</body>
+
+</html>

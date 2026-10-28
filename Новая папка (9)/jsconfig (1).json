@@ -1,0 +1,30 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"  url = env("DATABASE_URL") }
+model Category { id Int @id @default(autoincrement())  name String @unique  products Product[] }
+model Product {
+  id Int @id @default(autoincrement())
+  name String
+  description String @default("")
+  specs String @default("")
+  price Int
+  images String[]
+  stock Int @default(0)            // yagona haqiqat manbai: status shu sondan hisoblanadi
+  categoryId Int?
+  category Category? @relation(fields:[categoryId], references:[id])
+  items OrderItem[]
+}
+model Order {
+  id Int @id @default(autoincrement())
+  customerName String
+  phone String
+  address String
+  note String @default("")
+  total Int
+  status String @default("yangi") // yangi|tasdiqlangan|yetkazilmoqda|yakunlangan
+  createdAt DateTime @default(now())
+  items OrderItem[]
+}
+model OrderItem { id Int @id @default(autoincrement())  orderId Int  productId Int  qty Int  price Int
+  order Order @relation(fields:[orderId], references:[id])  product Product @relation(fields:[productId], references:[id]) }
+model TelegramGroup { id Int @id @default(autoincrement())  chatId String @unique  groupName String  isActive Boolean @default(true) }
+model AdminUser { id Int @id @default(autoincrement())  username String @unique  passwordHash String }

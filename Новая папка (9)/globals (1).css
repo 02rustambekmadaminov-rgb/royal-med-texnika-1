@@ -1,0 +1,1 @@
+module.exports={darkMode:'class',content:['./app/**/*.jsx','./components/**/*.jsx'],theme:{extend:{colors:{bg:'#0B0F1A',card:'#121826',gold:'#C9A227'}}}}
